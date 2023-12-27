@@ -1,0 +1,1 @@
+web: gunicorn SASEASU.wsgi

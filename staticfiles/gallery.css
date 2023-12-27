@@ -1,0 +1,75 @@
+/* HEADER Content */
+header{
+    background-image: url("/static/Images/Events/banner.jpeg");
+    height: 75vh;
+    background-size:cover;
+    background-position: 45% 55%;
+    text-align: center;
+  }
+
+  .header-text{
+    font-size: 100px;
+    color: #d9e1e8;;
+    padding-top:20% ;
+  }
+
+  .article-heading{
+    color:#37b24d;
+
+  }
+  .article-content{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 2%;
+    text-align: center;
+    width: 85vw;
+  }
+
+  .article-content p{
+    font-size:20;
+    padding-top: 2%;
+  }
+
+  .img-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-grid div img{
+    width: 40vw;
+    margin-top: 4%;
+  }
+  /* MEAT AND POTATOES */
+
+  .gallery-container{
+    margin-top: 5%  ;
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .row-one{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    width: 25vw;
+  }
+
+  .row-two{
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    width: 25vw;
+  }
+  .row-three{
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    width: 25vw;
+  }
