@@ -19,7 +19,7 @@ from pages.views import home_view, about_view, eboard_view, gallery_view, donate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view),
+    path('', home_view),
     path('about/', about_view),
     path('eboard/', eboard_view),
     path('gallery/', gallery_view),

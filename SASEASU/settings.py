@@ -26,7 +26,8 @@ SECRET_KEY = '2dauto3)x^zh!)(_&tsfbaqj@9dkhf*ag9&f*g$rc#w@z6cnaz'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'saseasu-production.up.railway.app'
+    'saseasu-production.up.railway.app',
+    '127.0.0.1'
 ]
 
 
