@@ -1,0 +1,37 @@
+/* HEADER Content */
+header{
+    background-image: url("/static/Images/about/top_banner.jpg");
+    height: 30vh;
+    background-size:cover;
+    background-position: 83% 17%;
+  }
+
+  .article-heading{
+    color:#37b24d;
+
+  }
+  .article-content{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 2%;
+    text-align: center;
+    width: 85vw;
+  }
+
+  .article-content p{
+    font-size:20;
+    padding-top: 2%;
+  }
+
+  .img-grid{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-grid div img{
+    width: 40vw;
+    margin-top: 4%;
+  }

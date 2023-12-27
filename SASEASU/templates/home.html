@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/static/home.css">
 </head>
 <body>
     {% extends "base.html" %}
 
     {% block content %}
-    Fuck you 1:16:09
+    <header>
+        <h1>THE SOCIETY OF ASIAN SCIENTISTS AND ENGINEERS</h1>
+        <h3>ASU Chapter</h3>
+      </header>
+
+      <article>
+        <div class="top-row-heading">
+
+          <h3 class="article-heading">WELCOME TO SASE @ ASU</h3>
+          <p style="font-family: 'Sofia Sans Condensed';font-size: 25;">SASE at ASU is dedicated to the advancement of Asian heritage scientists and engineers in education and employment so that they can achieve their full career potential. In addition to professional development, SASE at ASU also encourages members to contribute to the enhancement of the communities in which they live. </p>
+        </div>
+
+        <!-- three image flex -->
+        <div class="three-img">
+          <div>
+            <img src="/static/Images/prepare_img.jpg">
+            <h3>PREPARE</h3>
+            <p style="font-family: 'Sofia Sans Condensed';font-size: 20;">We prepare Asian heritage scientists and engineers for success in the global business world</p>
+          </div>
+
+          <div>
+            <img src="/static/Images/celebrate_img.jpg">
+            <h3>CELEBRATE</h3>
+            <p style="font-family: 'Sofia Sans Condensed';font-size: 20;"> We celebrate diversity on campuses and in the workplace</p>
+          </div>
+
+          <div>
+            <img src="/static/Images/provide_img.png">
+            <h3>PROVIDE</h3>
+            <p style="font-family: 'Sofia Sans Condensed';font-size: 20;">We provide opportunities for members to make contributions to their local communities​
+            </p>
+          </div>
+        </div>
+
+        <div class="img-note" style="margin-top: 5%;">
+          <div class="img--note">
+            <h1 style="font-size: 30;">OUR GOAL</h1>
+            <p style="font-family: 'Aller'; font-size:20; letter-spacing: 0.7px;">Unlocking full career potential at the ASU - Tempe campus.</p>
+          </div>
+        </div>
+      </article>
     {% endblock %}
 </body>
 </html>
