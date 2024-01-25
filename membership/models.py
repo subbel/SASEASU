@@ -7,3 +7,4 @@ class Student(models.Model):
     Socials = models.IntegerField()
     Industry = models.IntegerField()
     GBM = models.IntegerField()
+    # password =
