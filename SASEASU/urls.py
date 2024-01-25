@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import  path
 from pages.views import home_view, about_view, eboard_view, gallery_view, donate_view, meetings_view
+from meetings.views import meeting_list_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('gallery/', gallery_view),
     path('donate/', donate_view),
     path('meetings/', meetings_view),
+    path('test/', meeting_list_view),
 ]

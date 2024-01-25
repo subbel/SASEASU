@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .image-container {
+      position: relative;
+      width: 300px;
+      overflow: hidden;
+    }
+    .image-container img {
+      width: 100%;
+      height: auto;
+      transition: filter 0.3s ease;
+    }
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .image-container:hover img {
+      filter: blur(15px);
+    }
+
+    .image-container:hover .overlay-text {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Image container with text overlay -->
+<div class="image-container"><img src="Images/celebrate_img.jpg" alt="Your Image"><div class="overlay-text">Hovered Text</div></div>
+
+</body>
+</html>

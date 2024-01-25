@@ -89,6 +89,15 @@
     color: #d9e1e8;
   }
 
+  @media (max-width: 600px) {
+    .Heading {
+        display:none;
+    }
+    nav{
+      color: #282c37;
+    }
+  }
+
 
 
   /* FOOTER */
