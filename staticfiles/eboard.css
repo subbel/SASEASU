@@ -34,98 +34,36 @@
   .role-table{
     margin-top: 25px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto auto;
     justify-items: center;
     align-items: center;
     row-gap: 30px;
   }
 
-  .role-table div{
+  .image-container {
     position: relative;
+    width: 300px;
+    overflow: hidden;
   }
-
-  .role-table div div{
-    background-image: url("/static/Images/eboard/shangchi.jpg") ;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 30vw;
-    height: 60vh;
-    text-align: center;
+  .image-container img {
+    width: 100%;
+    height: auto;
+    transition: filter 0.3s ease;
   }
-
-
-  .text-over-img{
-    display: none;
-    color: black;
-    font-size: 20;
-    text-align: center;
-    position: absolute;
-    top: 50;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .role-table div div:hover{
-    background-image: url("/static/Images/eboard/shangchi.jpg") ;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 30vw;
-    height: 60vh;
-    text-align: center;
-    opacity: 0.2;
-    transition-duration:1s;
-  }
-
-  .role-table div:hover > .text-over-img{
-    display: block;
-    color: black;
-    font-size: 50;
-    text-align: center;
-    opacity: 1;
-    transition-duration:0.5s;
+  .overlay-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .image-container:hover img {
+    filter: blur(15px);
   }
 
-  .text-over-img:hover{
-    display: block;
-    color: black;
-    font-size: 50;
-    text-align: center;
+  .image-container:hover .overlay-text {
     opacity: 1;
-    transition-duration:0.5s;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .text-over-img:hover > .role-table div div{
-    background-image: url("/static/Images/eboard/shangchi.jpg") ;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 30vw;
-    height: 60vh;
-    text-align: center;
-    opacity: 0.2;
-    transition-duration:1s;
-    color: #37b24d;
-  }
-
-  .img-grid{
-    display: grid;
-    grid-template-columns: auto auto;
-    width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .img-grid div img{
-    width: 40vw;
-    margin-top: 4%;
   }
