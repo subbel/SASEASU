@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'pages',
-    'membership',
     'meetings',
+    'membership',
 ]
+
+AUTH_USER_MODEL = "membership.Student"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

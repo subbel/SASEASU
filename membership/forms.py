@@ -1,22 +1,15 @@
-from django import forms
-from django.core.exceptions import ValidationError
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 from .models import Student
 
-class Student_Signup:
-    name=forms.CharField()
-    email = forms.EmailField()
-    payment_bool = forms.BooleanField()
-    Socials = forms.IntegerField()
-    Industry = forms.IntegerField()
-    GBM = forms.IntegerField()
+class CustomUserCreationForm(UserCreationForm):
 
-    def clean_name(self):
-        name = self.cleaned_data['name']
-        return name
+    class Meta:
+        model = Student
+        fields = ("username", "email", "name",)
 
-    def clean_email(self):
-        email  =  self.cleaned_data['email']
-        r = Student.objects.filter(email=email)
-        if r.count():
-            raise  ValidationError("Account already exists")
-        return email
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = Student
+        fields = ("username", "email", 'name', 'Socials', 'Industry', 'GBM',)
