@@ -61,9 +61,9 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email','payment_bool','name', 'Socials', 'Industry', 'GBM',)
+    list_display = ('email','payment_bool','active_member','name', 'Socials', 'Industry', 'GBM',)
     fieldsets = (
-        (None, {'fields': ('email','payment_bool','name', 'Socials', 'Industry', 'GBM', 'password',)}),
+        (None, {'fields': ('email','payment_bool','active_member','name', 'Socials', 'Industry', 'GBM', 'password',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -71,11 +71,11 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide'),
-            'fields': ('email', 'payment_bool', 'name', 'Socials', 'Industry', 'GBM', 'password1', 'password2'),
+            'fields': ('email', 'payment_bool','active_member', 'name', 'Socials', 'Industry', 'GBM', 'password1', 'password2'),
         }),
     )
-    search_fields = ('email','payment_bool','name', 'Socials', 'Industry', 'GBM', )
-    ordering = ('email','payment_bool','name', 'Socials', 'Industry', 'GBM', )
+    search_fields = ('email','payment_bool','active_member','name', 'Socials', 'Industry', 'GBM', )
+    ordering = ('email','payment_bool','active_member','name', 'Socials', 'Industry', 'GBM', )
     filter_horizontal = ()
 
 

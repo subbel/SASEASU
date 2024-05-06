@@ -33,6 +33,7 @@ class MyUserManager(BaseUserManager):
 
 class Student(AbstractUser):
     payment_bool = models.BooleanField(default = False)
+    active_member = models.BooleanField(default=False)
     name=models.CharField(max_length=120, default = "Shang-Chi")
     Socials = models.IntegerField(default = 0)
     Industry = models.IntegerField(default = 0)
