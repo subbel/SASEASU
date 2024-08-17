@@ -1,0 +1,29 @@
+
+Hello {{ student.firstname}} {{student.lastname }}, <br>
+since you are a new student we would like to know more about you
+<form  method = "post">
+    {% csrf_token %}
+    Expected Graduation Year (MM/YYYY):
+    <input name="graduationyear" id="graduationyear"><br>
+    Discord(user#0000):
+    <input name="discord" id="discord"><br>
+    Year
+    <select id="year" name="year">
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+        <option value="Grad">Grad</option>
+    </select><br>
+    Major
+    <input name="major" id="major"><br>
+    Campus
+    <select id="campus" name="campus">
+        <option value="Tempe">Tempe</option>
+        <option value="West">West</option>
+        <option value="Downtown">Downtown</option>
+        <option value="Poly">Polytechnic</option>
+        <option value="Havasu">Lake Havasu</option>
+    </select>
+    <input type = "submit" value = "Sign up"><br>
+</form>

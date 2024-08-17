@@ -1,0 +1,97 @@
+<style>
+    /* Initially hide the conditional inputs */
+    .conditionalfirsttimer {
+        display: none;
+    }
+</style>
+
+{{ event }}
+
+<form action="{% url 'signin' %}" method = "post">
+    {% csrf_token %}
+    {% if error_ %} <h1>yes</h1> {% endif %}
+    firstname<input  name="firstname" id="firstname" value = {{firstnameactual}}><br>
+    lastname<input  name="lastname" id="lastname" value= {{lastnameactual}}><br>
+    <!-- year
+    <select id="year" name="year">
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+        <option value="Grad">Grad</option>
+      </select>
+    <br> -->
+    email<input type="email" name="email" id="email" value = {{emailactual}}><br>
+    asuid<input name="asuid" id="asuid" value = {{asuidactual}}><br>
+    <!-- <input type="radio" name="choice" id="choice" value="Submit Form"> -->
+    if it is your first time <input type = "checkbox" name = "signup" id = "signup" onclick="firsttimer()"> <br>
+    {% if update %}
+    if you would like to update/change any info <input type = "checkbox" name = "update"> <br>
+    {%endif%}
+    <div id = "conditionalfirsttimer" class="conditionalfirsttimer">
+        Expected Graduation Year (MM/YYYY):
+        <input name="graduationyear" id="graduationyear"><br>
+        Discord(user#0000):
+        <input name="discord" id="discord"><br>
+        Year
+        <select id="year" name="year">
+            <option value="Freshman">Freshman</option>
+            <option value="Sophomore">Sophomore</option>
+            <option value="Junior">Junior</option>
+            <option value="Senior">Senior</option>
+            <option value="Grad">Grad</option>
+        </select><br>
+        Major
+        <input name="major" id="major"><br>
+        Campus
+        <select id="campus" name="campus">
+            <option value="Tempe">Tempe</option>
+            <option value="West">West</option>
+            <option value="Downtown">Downtown</option>
+            <option value="Poly">Polytechnic</option>
+            <option value="Havasu">Lake Havasu</option>
+        </select>
+    </div>
+    <input type = "submit" value = "Sign in"><br>
+
+</form>
+
+{% if email %}
+<p> The given email is not recognised</p>
+<p> {{ email }}</p>
+{%endif%}
+
+{% if firstname %}
+<p> The given firstname is not recognised</p>
+<p> {{ firstname }}</p>
+{% endif %}
+
+{% if lastname %}
+<p> The given lastname is not recognised</p>
+<p> {{ lastname }}</p>
+{%endif%}
+
+<!-- {% if year %}
+<p> The given year is different</p>
+<p> {{ year }} </p>
+{%endif%} -->
+
+{% if asuid %}
+<p> The asuid is different </p>
+<p> {{ asuid }} </p>
+{%endif%}
+
+<script>
+    function firsttimer(){
+        var checkbox = document.getElementById("signup");
+        var divisor = document.getElementById("conditionalfirsttimer")
+
+        if(checkbox.checked){
+            conditionalfirsttimer.style.display = "block";
+        }
+        else{
+            conditionalfirsttimer.style.display = "none";
+        }
+
+    }
+</script>
