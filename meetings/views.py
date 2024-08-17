@@ -93,4 +93,4 @@ def signin(request):
             context["error"] = "Email doesnt exist"
             context["email"] = request.POST["email"]
     # request.POST[email] = "hello@asu.edu"
-    return render(request, "meetings/signin.html", context)
+    return render(request, "signin.html", context)
