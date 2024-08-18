@@ -3,6 +3,9 @@
     .conditionalfirsttimer {
         display: none;
     }
+    .major{
+        display: none;
+    }
 </style>
 
 {{ event }}
@@ -12,18 +15,8 @@
     {% if error_ %} <h1>yes</h1> {% endif %}
     firstname<input  name="firstname" id="firstname" value = {{firstnameactual}}><br>
     lastname<input  name="lastname" id="lastname" value= {{lastnameactual}}><br>
-    <!-- year
-    <select id="year" name="year">
-        <option value="Freshman">Freshman</option>
-        <option value="Sophomore">Sophomore</option>
-        <option value="Junior">Junior</option>
-        <option value="Senior">Senior</option>
-        <option value="Grad">Grad</option>
-      </select>
-    <br> -->
     email<input type="email" name="email" id="email" value = {{emailactual}}><br>
     asuid<input name="asuid" id="asuid" value = {{asuidactual}}><br>
-    <!-- <input type="radio" name="choice" id="choice" value="Submit Form"> -->
     if it is your first time <input type = "checkbox" name = "signup" id = "signup" onclick="firsttimer()"> <br>
     {% if update %}
     if you would like to update/change any info <input type = "checkbox" name = "update"> <br>
@@ -42,7 +35,22 @@
             <option value="Grad">Grad</option>
         </select><br>
         Major
-        <input name="major" id="major"><br>
+        <select id="major_dropdown" name = "major_dropdown">
+            <option>Aerospace Engineering</option>
+            <option>Biomedical Engineering</option>
+            <option>Chemical Engineering</option>
+            <option>Computer Science</option>
+            <option>Computer Systems</option>
+            <option>Electrical Engineering</option>
+            <option>Engineering Management</option>
+            <option>Environmental Engineering</option>
+            <option>Graphic Information Technology</option>
+            <option>Mechanical Engineering</option>
+            <option>Software Engineering</option>
+            <option>Materials Science & Engineering</option>
+            <option>Other</option>
+        </select>
+        <input name="major" id="major" class="major"><br>
         Campus
         <select id="campus" name="campus">
             <option value="Tempe">Tempe</option>
@@ -92,6 +100,16 @@
         else{
             conditionalfirsttimer.style.display = "none";
         }
-
     }
+    const dropdown = document.getElementById("major_dropdown")
+    const other = document.getElementById("major")
+
+    dropdown.addEventListener('click', function() {
+        if(dropdown.value == "Other"){
+            other.style.display = "block"
+        }
+        else{
+            other.style.display = "none"
+        }
+    })
 </script>

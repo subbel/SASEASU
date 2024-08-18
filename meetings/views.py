@@ -12,14 +12,8 @@ def meeting_list_view(request):
     return render(request, "test.html" ,context)
 
 def signin(request):
-    #
-    #
-    # Title of event here
     dropdown = get_object_or_404(Signin, pk =1)
     event = get_object_or_404(Event, title = dropdown.current)
-    #
-    #
-    #
     context = {}
     context["event"] = event
     firsttimer = False
@@ -31,7 +25,10 @@ def signin(request):
         gradyear = request.POST["graduationyear"]
         discord = request.POST["discord"]
         year = request.POST["year"]
-        major = request.POST["major"]
+        if(request.POST["major_dropdown"] != "Other"):
+            major = request.POST["major_dropdown"]
+        else:
+            major = request.POST["major"]
         campus = request.POST["campus"]
         context["firstnameactual"] = firstname
         context["lastnameactual"] = lastname
