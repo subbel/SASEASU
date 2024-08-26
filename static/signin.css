@@ -1,0 +1,72 @@
+/* Initially hide the conditional inputs */
+.conditionalfirsttimer {
+    display: none;
+    grid-column: 1/span2;
+}
+.major{
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.pageframe{
+    padding: 10%;
+    height: 100vh;
+}
+
+body{
+    text-align: center;
+}
+
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    height: 34.5vw;
+    width: 88%;
+    margin-left: 5%;
+    /* background-color: #282c37; */
+}
+
+.flexform{
+    width: 50%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.fleximg{
+    width: 50%;
+    height: 100%;
+}
+
+.imgleft{
+    width: 100%;
+    height: fit-content;
+}
+
+@media (max-width:900px){
+    .flexbox{
+        flex-direction: column;
+        margin-left: 28%;
+    }
+}
+
+@media(max-width:577px){
+    .flexbox{
+        margin-top: 10%;
+    }
+}
+
+@media(max-width:300px){
+    .flexbox{
+        margin-top: 20% ;
+    }
+}

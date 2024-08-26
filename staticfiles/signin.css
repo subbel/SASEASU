@@ -1,0 +1,52 @@
+/* Initially hide the conditional inputs */
+.conditionalfirsttimer {
+    display: none;
+    grid-column: 1/span2;
+}
+.major{
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.pageframe{
+    padding: 10%;
+    height: 100vh;
+}
+
+body{
+    text-align: center;
+}
+
+
+
+
+
+
+
+@media (max-width:900px){
+    .flexbox{
+        flex-direction: column;
+    }
+}
+
+@media(max-width:577px){
+    .flexbox{
+        margin-top: 10%;
+    }
+}
+
+@media(max-width:300px){
+    .flexbox{
+        margin-top: 20% ;
+    }
+}

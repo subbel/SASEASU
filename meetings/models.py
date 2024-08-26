@@ -9,6 +9,8 @@ Type_CHOICES = (
     ('2', 'Social'),
     ('3','Industry Event'),
     ('4', 'Industry and GBM'),
+    ('5', 'Social and GBM'),
+    ('6', 'Social and Industry'),
     ('None', 'None'),
 )
 
@@ -55,6 +57,8 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     attendance = models.IntegerField(default=0)
     type = models.CharField(max_length=20, choices= Type_CHOICES, default= 'None')
+    date = models.DateTimeField()
+    flyer = models.ImageField(upload_to="static/Flyers/")
 
     def __str__(self) -> str:
         return self.title

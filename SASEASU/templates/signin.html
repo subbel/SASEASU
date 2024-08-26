@@ -1,93 +1,135 @@
+<head>
+    <link rel="stylesheet" href="/static/signin.css">
+</head>
 <style>
-    /* Initially hide the conditional inputs */
-    .conditionalfirsttimer {
-        display: none;
-    }
-    .major{
-        display: none;
+    .nav{
+        background-color:#2b90d9;
     }
 </style>
+<body>
+    {% extends "base.html" %}
 
-{{ event }}
+    {% block content %}
+    <header>
 
-<form action="{% url 'signin' %}" method = "post">
-    {% csrf_token %}
-    {% if error_ %} <h1>yes</h1> {% endif %}
-    firstname<input  name="firstname" id="firstname" value = {{firstnameactual}}><br>
-    lastname<input  name="lastname" id="lastname" value= {{lastnameactual}}><br>
-    email<input type="email" name="email" id="email" value = {{emailactual}}><br>
-    asuid<input name="asuid" id="asuid" value = {{asuidactual}}><br>
-    if it is your first time <input type = "checkbox" name = "signup" id = "signup" onclick="firsttimer()"> <br>
-    {% if update %}
-    if you would like to update/change any info <input type = "checkbox" name = "update"> <br>
-    {%endif%}
-    <div id = "conditionalfirsttimer" class="conditionalfirsttimer">
-        Expected Graduation Year (MM/YYYY):
-        <input name="graduationyear" id="graduationyear"><br>
-        Discord(user#0000):
-        <input name="discord" id="discord"><br>
-        Year
-        <select id="year" name="year">
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-            <option value="Grad">Grad</option>
-        </select><br>
-        Major
-        <select id="major_dropdown" name = "major_dropdown">
-            <option>Aerospace Engineering</option>
-            <option>Biomedical Engineering</option>
-            <option>Chemical Engineering</option>
-            <option>Computer Science</option>
-            <option>Computer Systems</option>
-            <option>Electrical Engineering</option>
-            <option>Engineering Management</option>
-            <option>Environmental Engineering</option>
-            <option>Graphic Information Technology</option>
-            <option>Mechanical Engineering</option>
-            <option>Software Engineering</option>
-            <option>Materials Science & Engineering</option>
-            <option>Other</option>
-        </select>
-        <input name="major" id="major" class="major"><br>
-        Campus
-        <select id="campus" name="campus">
-            <option value="Tempe">Tempe</option>
-            <option value="West">West</option>
-            <option value="Downtown">Downtown</option>
-            <option value="Poly">Polytechnic</option>
-            <option value="Havasu">Lake Havasu</option>
-        </select>
+    </header>
+    <div class="pageframe">
+    <form action="{% url 'signin' %}" method = "post" class="signform">
+        <div class="flexbox" >
+            <!-- <div class="flexform" style="display: flex;justify-content: center;"> -->
+            <div class="flexform" >
+                {% csrf_token %}
+                {% if error_ %} <h1>yes</h1> {% endif %}
+                <label class="firstname-label" for="firstname">Firstname: </label>
+                <input class="firstname-input"  name="firstname" id="firstname" value = "{{firstnameactual}}" >
+                <label class="lastname-label" for="lastname">Lastname: </label>
+                <input class="lastname-input"  name="lastname" id="lastname" value= "{{lastnameactual}} ">
+                <label class="email-label" for="email">Email: </label>
+                <input class="email-input" type="email" name="email" id="email" value = "{{emailactual}}" >
+                <label class="asuid-label" for="asuid">ASU ID: </label>
+                <input class="asuid-input" type="number" name="asuid" id="asuid" value = "{{asuidactual}}" minlength="10" maxlength="10" >
+                <label class="signup-label" for="signup">If it is your first time</label>
+                <input class="signup-input" type = "checkbox" name = "signup" id = "signup" onclick="firsttimer()">
+                {% if update %}
+                <label class="update-label" for="update">Update/Change Info</label>
+                <input class="update-input" type = "checkbox" name = "update">
+                {%endif%}
+                <input class="submit-btn" type = "submit" value = "Sign in" style="grid-column: 1/ span 2;">
+            </div>
+            <div class="fleximg" >
+                <img src="/{{event.flyer }}" class="imgleft" id="imgleft">
+                <div id = "conditionalfirsttimer" class="conditionalfirsttimer">
+                    <label class="graduation-label" for="graduationyear">Expected Graduation Year (MM/YYYY): </label>
+                    <input class="graduation-input" name="graduationyear" id="graduationyear" >
+                    <label class="discord-label" for="discord">Discord(user#0000): </label>
+                    <input class="discord-input" name="discord" id="discord" >
+                    <label class="year-label" for="year">Year: </label>
+                    <select class="year-input" id="year" name="year" >
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Grad">Grad</option>
+                    </select>
+                    <label class="dropdown-label" for="major_dropdown"> Major: </label>
+                    <select class="dropdown-input" id="major_dropdown" name = "major_dropdown" >
+                        <option>Aerospace Engineering</option>
+                        <option>Biomedical Engineering</option>
+                        <option>Chemical Engineering</option>
+                        <option>Computer Science</option>
+                        <option>Computer Systems</option>
+                        <option>Electrical Engineering</option>
+                        <option>Engineering Management</option>
+                        <option>Environmental Engineering</option>
+                        <option>Graphic Information Technology</option>
+                        <option>Mechanical Engineering</option>
+                        <option>Software Engineering</option>
+                        <option>Materials Science & Engineering</option>
+                        <option>Other</option>
+                    </select>
+                    <div id="major" class="major" >
+                        <label class="major-label" for= "major">Other: </label>
+                        <input class="major-input" name="major" >
+                    </div>
+                    <label class="campus-label" for="campus">Campus</label>
+                    <select class="campus-input" id="campus" name="campus" >
+                        <option value="Tempe">Tempe</option>
+                        <option value="West">West</option>
+                        <option value="Downtown">Downtown</option>
+                        <option value="Poly">Polytechnic</option>
+                        <option value="Havasu">Lake Havasu</option>
+                    </select>
+                </div>
+            </div>
     </div>
-    <input type = "submit" value = "Sign in"><br>
+</div>
+    </form>
 
-</form>
 
-{% if email %}
-<p> The given email is not recognised</p>
-<p> {{ email }}</p>
-{%endif%}
 
-{% if firstname %}
-<p> The given firstname is not recognised</p>
-<p> {{ firstname }}</p>
-{% endif %}
 
-{% if lastname %}
-<p> The given lastname is not recognised</p>
-<p> {{ lastname }}</p>
-{%endif%}
 
-<!-- {% if year %}
-<p> The given year is different</p>
-<p> {{ year }} </p>
-{%endif%} -->
+    {% if email %}
+    <p> The given email is not recognised</p>
+    <p> {{ email }}</p>
+    {%endif%}
 
-{% if asuid %}
-<p> The asuid is different </p>
-<p> {{ asuid }} </p>
-{%endif%}
+    {% if firstname %}
+    <p> The given firstname is not recognised</p>
+    <p> {{ firstname }}</p>
+    {% endif %}
+
+    {% if lastname %}
+    <p> The given lastname is not recognised</p>
+    <p> {{ lastname }}</p>
+    {%endif%}
+
+    <!-- {% if year %}
+    <p> The given year is different</p>
+    <p> {{ year }} </p>
+    {%endif%} -->
+
+    {% if asuid %}
+    <p> The asuid is different </p>
+    <p> {{ asuid }} </p>
+    {%endif%}
+</div>
+    </article>
+    <script >
+        document.getElementById("navbar").style.backgroundColor="#2b90d9"
+        // window.onscroll = function() {scrollFunction()};
+
+        // function scrollFunction() {
+        //   if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
+        //     document.getElementById("navbar").style.backgroundColor = "#2b90d9";
+        //     document.getElementById("navbar").style.transition = "500ms";
+        //   } else {
+        //     document.getElementById("navbar").style.backgroundColor = "#2b90d9";
+        //   }
+        // }
+      </script>
+
+</body>
 
 <script>
     function firsttimer(){
@@ -95,10 +137,12 @@
         var divisor = document.getElementById("conditionalfirsttimer")
 
         if(checkbox.checked){
-            conditionalfirsttimer.style.display = "block";
+            conditionalfirsttimer.style.display = "grid";
+            document.getElementById("imgleft").style.display="none";
         }
         else{
             conditionalfirsttimer.style.display = "none";
+            document.getElementById("imgleft").style.display="block";
         }
     }
     const dropdown = document.getElementById("major_dropdown")
@@ -113,3 +157,4 @@
         }
     })
 </script>
+{%endblock%}

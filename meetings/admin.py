@@ -9,7 +9,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ("title", "attendance", "type")
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("firstname", "lastname", "email")
+    list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry")
 admin.site.register(Signin)
 
 # admin page experimantal

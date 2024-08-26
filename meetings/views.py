@@ -16,20 +16,19 @@ def signin(request):
     event = get_object_or_404(Event, title = dropdown.current)
     context = {}
     context["event"] = event
-    firsttimer = False
     if request.method == "POST":
-        firstname = request.POST["firstname"]
-        lastname = request.POST["lastname"]
-        email = request.POST["email"]
-        asuid = request.POST["asuid"]
-        gradyear = request.POST["graduationyear"]
-        discord = request.POST["discord"]
-        year = request.POST["year"]
+        firstname = request.POST["firstname"].strip()
+        lastname = request.POST["lastname"].strip()
+        email = request.POST["email"].strip()
+        asuid = request.POST["asuid"].strip()
+        gradyear = request.POST["graduationyear"].strip()
+        discord = request.POST["discord"].strip()
+        year = request.POST["year"].strip()
         if(request.POST["major_dropdown"] != "Other"):
-            major = request.POST["major_dropdown"]
+            major = request.POST["major_dropdown"].strip()
         else:
-            major = request.POST["major"]
-        campus = request.POST["campus"]
+            major = request.POST["major"].strip()
+        campus = request.POST["campus"].strip()
         context["firstnameactual"] = firstname
         context["lastnameactual"] = lastname
         context["emailactual"] = email
@@ -60,7 +59,7 @@ def signin(request):
                 if lastname != student.lastname:
                     context["lastname"] = lastname
                     error = True
-                if asuid != student.ASUID:
+                if asuid!= student.ASUID:
                     context["asuid"] = asuid
                     error = True
             if error == False:
@@ -80,6 +79,14 @@ def signin(request):
                 elif typo == "4":
                     student.Industry += 1
                     student.GBM += 1
+                    student.save()
+                elif typo == "5":
+                    student.Socials +=1
+                    student.GBM += 1
+                    student.save()
+                elif typo == "6":
+                    student.Socials +=1
+                    student.Industry += 1
                     student.save()
                 return HttpResponse("Thank you for signing in")
 
