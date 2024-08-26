@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import F
 from django.urls import reverse
 from .models import Meetings, Event, Student, StudentForm, Signin
+from django.views.decorators.csrf import csrf_protect
+from django.template.context_processors import csrf
 
 def meeting_list_view(request):
     queryset = Meetings.objects.all()
@@ -11,10 +13,12 @@ def meeting_list_view(request):
     }
     return render(request, "test.html" ,context)
 
+@csrf_protect
 def signin(request):
     dropdown = get_object_or_404(Signin, pk =1)
     event = get_object_or_404(Event, title = dropdown.current)
     context = {}
+    context.update(csrf(request))
     context["event"] = event
     if request.method == "POST":
         firstname = request.POST["firstname"].strip()
@@ -88,7 +92,7 @@ def signin(request):
                     student.Socials +=1
                     student.Industry += 1
                     student.save()
-                return HttpResponse("Thank you for signing in")
+                return HttpResponseRedirect(("/"))
 
             else:
                 # context["email"] = email

@@ -15,10 +15,11 @@
     </header>
     <div class="pageframe">
     <form action="{% url 'signin' %}" method = "post" class="signform">
+        {% csrf_token %}
         <div class="flexbox" >
             <!-- <div class="flexform" style="display: flex;justify-content: center;"> -->
-            <div class="flexform" >
-                {% csrf_token %}
+            <center class="flexform" >
+
                 {% if error_ %} <h1>yes</h1> {% endif %}
                 <label class="firstname-label" for="firstname">Firstname: </label>
                 <input class="firstname-input"  name="firstname" id="firstname" value = "{{firstnameactual}}" >
@@ -35,10 +36,11 @@
                 <input class="update-input" type = "checkbox" name = "update">
                 {%endif%}
                 <input class="submit-btn" type = "submit" value = "Sign in" style="grid-column: 1/ span 2;">
-            </div>
-            <div class="fleximg" >
+
+            </center>
+            <center class="fleximg" >
                 <img src="/{{event.flyer }}" class="imgleft" id="imgleft">
-                <div id = "conditionalfirsttimer" class="conditionalfirsttimer">
+                <center id = "conditionalfirsttimer" class="conditionalfirsttimer">
                     <label class="graduation-label" for="graduationyear">Expected Graduation Year (MM/YYYY): </label>
                     <input class="graduation-input" name="graduationyear" id="graduationyear" >
                     <label class="discord-label" for="discord">Discord(user#0000): </label>
@@ -51,7 +53,7 @@
                         <option value="Senior">Senior</option>
                         <option value="Grad">Grad</option>
                     </select>
-                    <label class="dropdown-label" for="major_dropdown"> Major: </label>
+                    <label class="dropdown-label" for="major_dropdown">Major: </label>
                     <select class="dropdown-input" id="major_dropdown" name = "major_dropdown" >
                         <option>Aerospace Engineering</option>
                         <option>Biomedical Engineering</option>
@@ -71,7 +73,7 @@
                         <label class="major-label" for= "major">Other: </label>
                         <input class="major-input" name="major" >
                     </div>
-                    <label class="campus-label" for="campus">Campus</label>
+                    <label class="campus-label" for="campus">Campus: </label>
                     <select class="campus-input" id="campus" name="campus" >
                         <option value="Tempe">Tempe</option>
                         <option value="West">West</option>
@@ -79,11 +81,10 @@
                         <option value="Poly">Polytechnic</option>
                         <option value="Havasu">Lake Havasu</option>
                     </select>
-                </div>
-            </div>
+            </center>
+        </div>
     </div>
-</div>
-    </form>
+</form>
 
 
 
