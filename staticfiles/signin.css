@@ -1,7 +1,8 @@
 /* Initially hide the conditional inputs */
 .conditionalfirsttimer {
     display: none;
-    grid-column: 1/span2;
+    text-align: center;
+    width: 100%;
 }
 .major{
     display: none;
@@ -13,6 +14,74 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+label{
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size:x-large;
+    font-weight: 800;
+}
+
+input[type=text] {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+input:focus[type = text] {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+                -13px -13px 100px #ffffff;
+}
+
+input[type=number] {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+input:focus[type = number] {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+                -13px -13px 100px #ffffff;
+}
+
+input[type=email] {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+input:focus[type = email] {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+                -13px -13px 100px #ffffff;
+}
+
+select {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+
+.submit-btn{
+    border-radius: 10px;
+    background-color: #2b90d9;
+    width:20vw;
+    margin-left: 24%;
+}
+
+
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
@@ -20,33 +89,71 @@ input[type=number] {
 
 .pageframe{
     padding: 10%;
-    height: 100vh;
+    /* height: 100vh; */
+    min-height: 100vh;
 }
 
 body{
     text-align: center;
 }
 
+.flexbox{
+    display: flex;
+    flex-direction: row;
+    height: 39.5vw;
+    width: 79vw;
+    /* margin-bottom: 50%; */
+}
+
+.flexform{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    flex-basis: 50%;
+}
+
+.fleximg{
+    display: flex;
+    width: 50%;
+}
+
+.imgleft{
+    width: 100%;
+    height: fit-content;
+}
 
 
-
-
-
-
-@media (max-width:900px){
+@media (max-width:500px){
     .flexbox{
         flex-direction: column;
+        align-items: flex-start;
+        height: fit-content;
+    }
+    .flexform{
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+    }
+    .fleximg{
+        width: 80vw;
+    }
+    .centerdiv{
+        width: 80vw;
+    }
+    .submit-btn{
+        margin-left: 37%;
     }
 }
 
-@media(max-width:577px){
-    .flexbox{
-        margin-top: 10%;
+
+@media(max-width:575px){
+    .pageframe{
+        padding-top: 15%;
     }
 }
 
-@media(max-width:300px){
-    .flexbox{
-        margin-top: 20% ;
+@media(max-width:350px){
+    .pageframe{
+        padding-top: 30% ;
     }
 }

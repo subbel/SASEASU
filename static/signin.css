@@ -20,7 +20,7 @@ label{
     font-weight: 800;
 }
 
-input {
+input[type=text] {
     border: none;
     outline: none;
     padding: 1em;
@@ -28,12 +28,51 @@ input {
     transition: 300ms ease-in-out;
 }
 
-input:focus {
+input:focus[type = text] {
     background-color: white;
     transform: scale(1.05);
     box-shadow: 13px 13px 100px #969696,
                 -13px -13px 100px #ffffff;
 }
+
+input[type=number] {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+input:focus[type = number] {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+                -13px -13px 100px #ffffff;
+}
+
+input[type=email] {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
+input:focus[type = email] {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 13px 13px 100px #969696,
+                -13px -13px 100px #ffffff;
+}
+
+select {
+    border: none;
+    outline: none;
+    padding: 1em;
+    background-color: #ccc;
+    transition: 300ms ease-in-out;
+}
+
 
 .submit-btn{
     border-radius: 10px;

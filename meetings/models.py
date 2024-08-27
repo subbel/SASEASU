@@ -77,6 +77,7 @@ class Student(models.Model):
     year = models.CharField(max_length=20, choices=Year)
     major = models.CharField(max_length=100,)
     campus = models.CharField(max_length=50, choices=Campus)
+    events = models.TextField()
 
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname

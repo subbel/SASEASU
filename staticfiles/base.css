@@ -34,6 +34,8 @@
     width: 100%; /* Full width */
     border-bottom: 2px solid #d9e1e8;
     z-index: 10;
+    overflow: auto;
+    white-space: nowrap;
   }
 
   nav ul li a{

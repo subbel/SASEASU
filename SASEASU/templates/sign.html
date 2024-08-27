@@ -2,21 +2,17 @@
 
 {% block content %}
 <style>
-    .hello{
-        margin-top: 50px;
-    }
-    body{
-        height: 100vh;
+    .nav{
+        background-color:#2b90d9;
     }
 </style>
+<center>
+    <p style="margin-top: 25%; margin-bottom: 20%; font-size:xx-large; font-weight:600 ;">
+        Thank you for signing in
+    </p>
+</center>
 
-<!-- <form method="post"> {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form> -->
-
-<form action='.' method="POST" class="hello">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form>
+<script >
+    document.getElementById("navbar").style.backgroundColor="#2b90d9"
+  </script>
 {% endblock %}

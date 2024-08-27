@@ -21,8 +21,8 @@ def signin(request):
     context.update(csrf(request))
     context["event"] = event
     if request.method == "POST":
-        firstname = request.POST["firstname"].strip()
-        lastname = request.POST["lastname"].strip()
+        firstname = request.POST["firstname"].strip().capitalize()
+        lastname = request.POST["lastname"].strip().capitalize()
         email = request.POST["email"].strip()
         asuid = request.POST["asuid"].strip()
         gradyear = request.POST["graduationyear"].strip()
@@ -52,6 +52,8 @@ def signin(request):
         try:
             error = False
             student = Student.objects.get(email = request.POST["email"])
+            if event.title in student.events:
+                return HttpResponseRedirect(reverse("thankyou"))
             if request.POST.get("update"):
                 student.firstname = firstname
                 student.lastname = lastname
@@ -92,7 +94,10 @@ def signin(request):
                     student.Socials +=1
                     student.Industry += 1
                     student.save()
-                return HttpResponseRedirect(("/"))
+                student.events += event.title + " , "
+                student.save()
+                context = {}
+                return HttpResponseRedirect(reverse("thankyou"))
 
             else:
                 # context["email"] = email
@@ -102,3 +107,6 @@ def signin(request):
             context["email"] = request.POST["email"]
     # request.POST[email] = "hello@asu.edu"
     return render(request, "signin.html", context)
+
+def thank_view(request):
+    return render(request, "sign.html")

@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import  include, path
 from pages.views import home_view, about_view, eboard_view, gallery_view, donate_view, meetings_view
-from meetings.views import meeting_list_view, signin
+from meetings.views import meeting_list_view, signin, thank_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view),
+    path('', home_view, name="home"),
     path('about/', about_view),
     path('eboard/', eboard_view),
     path('gallery/', gallery_view),
@@ -28,6 +28,7 @@ urlpatterns = [
     path('meetings/', meetings_view),
     path('signin/', signin, name="signin"),
     path("test/", meeting_list_view),
+    path("thanks/", thank_view, name="thankyou")
     # path('student/', include('membership.urls'))
     # path("signups/", new_user)
 ]
