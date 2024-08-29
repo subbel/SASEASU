@@ -98,11 +98,31 @@
 
     {% if lastname %}
     <p> The given lastname is not recognised</p>
+    <p>{{lastname}}</p>
     {%endif%}
 
     {% if asuid %}
     <p> The asuid is different </p>
     <p> {{ asuid }} </p>
+    {%endif%}
+
+    {% if firstname or lastname or asuid%}
+        <script>
+            var firstname = "{{firstname}}";
+            var lastname = "{{lastname}}";
+            var asuid = "{{asuid}}";
+            var alertstring = "";
+            if (firstname != ""){
+                alertstring += "The Firstname given does not match our records\n";
+            }
+            if (lastname != ""){
+                alertstring += "The Lastname given does not match our records\n";
+            }
+            if (asuid != ""){
+                alertstring += "The ASUID given does not match our records\n";
+            }
+            alert(alertstring);
+        </script>
     {%endif%}
 </div>
     </article>
