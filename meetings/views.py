@@ -37,19 +37,19 @@ def signin(request):
         context["lastnameactual"] = lastname
         context["emailactual"] = email
         context["asuidactual"] = asuid
-        if request.POST.get("signup"):
-            temp_stud = Student()
-            temp_stud.email = email
-            temp_stud.firstname = firstname
-            temp_stud.lastname = lastname
-            temp_stud.ASUID = asuid
-            temp_stud.graduation_year = gradyear
-            temp_stud.discord = discord
-            temp_stud.year = year
-            temp_stud.major = major
-            temp_stud.campus = campus
-            temp_stud.save()
         try:
+            if request.POST.get("signup"):
+                temp_stud = Student()
+                temp_stud.email = email
+                temp_stud.firstname = firstname
+                temp_stud.lastname = lastname
+                temp_stud.ASUID = asuid
+                temp_stud.graduation_year = gradyear
+                temp_stud.discord = discord
+                temp_stud.year = year
+                temp_stud.major = major
+                temp_stud.campus = campus
+                temp_stud.save()
             error = False
             student = Student.objects.get(email = request.POST["email"])
             if event.title in student.events:
@@ -105,6 +105,12 @@ def signin(request):
         except(Student.DoesNotExist):
             context["error"] = "Email doesnt exist"
             context["email"] = request.POST["email"]
+        except(Student.MultipleObjectsReturned):
+            list = Student.objects.filter(email = request.POST["email"])
+            for i in list[1:]:
+                if i.email == request.POST["email"]:
+                    i.delete()
+            return HttpResponseRedirect(reverse("thankyou"))
     # request.POST[email] = "hello@asu.edu"
     return render(request, "signin.html", context)
 

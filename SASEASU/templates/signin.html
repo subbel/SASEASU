@@ -71,7 +71,7 @@
                     </select>
                     <div id="major" class="major" >
                         <label class="major-label" type="text" for= "major">Other: </label>
-                        <input class="major-input" name="major" >
+                        <input class="major-input" name="major" id="major-text">
                     </div>
                     <label class="campus-label" for="campus">Campus: </label>
                     <select class="campus-input" id="campus" name="campus" >
@@ -153,9 +153,11 @@
     dropdown.addEventListener('click', function() {
         if(dropdown.value == "Other"){
             other.style.display = "block"
+            document.getElementById("major-text").required = true
         }
         else{
             other.style.display = "none"
+            document.getElementById("major-text").required = true
         }
     })
 </script>
