@@ -43,7 +43,7 @@
                 <center id = "conditionalfirsttimer" class="conditionalfirsttimer">
                     <label class="graduation-label" for="graduationyear">Expected Graduation Year (MM/YYYY): </label>
                     <input class="graduation-input" type="text" name="graduationyear" id="graduationyear" >
-                    <label class="discord-label" for="discord">Discord(user#0000): </label>
+                    <label class="discord-label" for="discord">Discord: </label>
                     <input class="discord-input" type="text" name="discord" id="discord" >
                     <label class="year-label" for="year">Year: </label>
                     <select class="year-input" id="year" name="year" >
@@ -88,6 +88,8 @@
     {% if email %}
         <script>
             alert("The email is not recognised")
+            document.getElementById("email").style.transition = "border 0.5s"
+            document.getElementById("email").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
         </script>
     {%endif%}
 
@@ -111,17 +113,18 @@
             var firstname = "{{firstname}}";
             var lastname = "{{lastname}}";
             var asuid = "{{asuid}}";
-            var alertstring = "";
             if (firstname != ""){
-                alertstring += "The Firstname given does not match our records\n";
+                document.getElementById("firstname").style.transition = "border 0.5s"
+                document.getElementById("firstname").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
             }
             if (lastname != ""){
-                alertstring += "The Lastname given does not match our records\n";
+                document.getElementById("lastname").style.transition = "border 0.5s"
+                document.getElementById("lastname").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
             }
             if (asuid != ""){
-                alertstring += "The ASUID given does not match our records\n";
+                document.getElementById("asuid").style.transition = "border 0.5s"
+                document.getElementById("asuid").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
             }
-            alert(alertstring);
         </script>
     {%endif%}
 </div>
@@ -157,7 +160,7 @@
         }
         else{
             other.style.display = "none"
-            document.getElementById("major-text").required = true
+            document.getElementById("major-text").required = false
         }
     })
 </script>

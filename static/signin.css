@@ -21,48 +21,66 @@ label{
 }
 
 input[type=text] {
-    border: none;
-    outline: none;
-    padding: 1em;
-    background-color: #ccc;
-    transition: 300ms ease-in-out;
+     padding: 5px 12px;
+     font-size: 14px;
+     line-height: 20px;
+     color: #24292e;
+     vertical-align: middle;
+     background-color: #ffffff;
+     background-repeat: no-repeat;
+     background-position: right 8px center;
+     border: 1px solid #e1e4e8;
+     border-radius: 6px;
+     outline: none;
+     box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
 }
 
 input:focus[type = text] {
-    background-color: white;
-    transform: scale(1.05);
-    box-shadow: 13px 13px 100px #969696,
-                -13px -13px 100px #ffffff;
+    border-color: #0366d6;
+    outline: none;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 input[type=number] {
-    border: none;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
     outline: none;
-    padding: 1em;
-    background-color: #ccc;
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
 }
 
 input:focus[type = number] {
-    background-color: white;
-    transform: scale(1.05);
-    box-shadow: 13px 13px 100px #969696,
-                -13px -13px 100px #ffffff;
+   border-color: #0366d6;
+   outline: none;
+   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 input[type=email] {
-    border: none;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292e;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
     outline: none;
-    padding: 1em;
-    background-color: #ccc;
-    transition: 300ms ease-in-out;
+    box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
 }
 
 input:focus[type = email] {
-    background-color: white;
-    transform: scale(1.05);
-    box-shadow: 13px 13px 100px #969696,
-                -13px -13px 100px #ffffff;
+   border-color: #0366d6;
+   outline: none;
+   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
 
 select {
