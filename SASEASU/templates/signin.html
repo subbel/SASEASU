@@ -43,7 +43,7 @@
                 <center id = "conditionalfirsttimer" class="conditionalfirsttimer">
                     <label class="graduation-label" for="graduationyear">Expected Graduation Year (MM/YYYY): </label>
                     <input class="graduation-input" type="text" name="graduationyear" id="graduationyear" >
-                    <label class="discord-label" for="discord">Discord: </label>
+                    <label class="discord-label" for="discord">Discord(user#0000): </label>
                     <input class="discord-input" type="text" name="discord" id="discord" >
                     <label class="year-label" for="year">Year: </label>
                     <select class="year-input" id="year" name="year" >
@@ -71,7 +71,7 @@
                     </select>
                     <div id="major" class="major" >
                         <label class="major-label" type="text" for= "major">Other: </label>
-                        <input class="major-input" name="major" id="major-text">
+                        <input class="major-input" name="major" >
                     </div>
                     <label class="campus-label" for="campus">Campus: </label>
                     <select class="campus-input" id="campus" name="campus" >
@@ -88,8 +88,6 @@
     {% if email %}
         <script>
             alert("The email is not recognised")
-            document.getElementById("email").style.transition = "border 0.5s"
-            document.getElementById("email").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
         </script>
     {%endif%}
 
@@ -113,18 +111,17 @@
             var firstname = "{{firstname}}";
             var lastname = "{{lastname}}";
             var asuid = "{{asuid}}";
+            var alertstring = "";
             if (firstname != ""){
-                document.getElementById("firstname").style.transition = "border 0.5s"
-                document.getElementById("firstname").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
+                alertstring += "The Firstname given does not match our records\n";
             }
             if (lastname != ""){
-                document.getElementById("lastname").style.transition = "border 0.5s"
-                document.getElementById("lastname").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
+                alertstring += "The Lastname given does not match our records\n";
             }
             if (asuid != ""){
-                document.getElementById("asuid").style.transition = "border 0.5s"
-                document.getElementById("asuid").style.border = "0.3rem solid rgba(181, 43, 43, 0.5)"
+                alertstring += "The ASUID given does not match our records\n";
             }
+            alert(alertstring);
         </script>
     {%endif%}
 </div>
@@ -156,11 +153,9 @@
     dropdown.addEventListener('click', function() {
         if(dropdown.value == "Other"){
             other.style.display = "block"
-            document.getElementById("major-text").required = true
         }
         else{
             other.style.display = "none"
-            document.getElementById("major-text").required = false
         }
     })
 </script>
