@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'saseasu.up.railway.app',
     '127.0.0.1',
+    'saseasu-fqdzh8bef4b7bpfj.eastus-01.azurewebsites.net',
 ]
 
 
