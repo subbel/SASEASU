@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.db.models import F
 from django.urls import reverse
 from .models import Meetings, Event, Student, StudentForm, Signin
@@ -116,3 +116,7 @@ def signin(request):
 
 def thank_view(request):
     return render(request, "sign.html")
+
+def download(request, id):
+    response = FileResponse(open("../../Students.xlsx", 'rb'))
+    return response

@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.contrib import admin
 from django.urls import reverse
 
 type = {"GBM": 1, "Social" : 2, "Industry Event" : 3}
@@ -116,3 +117,32 @@ class Signin(models.Model):
 
     class Meta:
         verbose_name_plural = "Signin"
+
+# new model for testing
+
+class Tester(models.Model):
+    firstname = models.CharField(blank=False, max_length = 50)
+    lastname = models.CharField(blank = False, max_length = 50)
+    email = models.CharField(max_length=100)
+    ASUID = models.CharField(max_length=10)
+    Socials = models.IntegerField(default=0)
+    GBM = models.IntegerField(default=0)
+    Industry = models.IntegerField(default=0)
+
+    graduation_year = models.CharField(max_length=50)
+    discord = models.CharField(max_length=50)
+    year = models.CharField(max_length=20, choices=Year)
+    major = models.CharField(max_length=100,)
+    campus = models.CharField(max_length=50, choices=Campus)
+    events = models.TextField()
+
+    def __str__(self) -> str:
+        return self.firstname + " " + self.lastname
+
+    @classmethod
+    def create(cls, firstname, lastname, year, email):
+        cls(firstname = firstname)
+        cls(lastname = lastname)
+        cls(year = year)
+        cls(email = email)
+        return cls

@@ -1,68 +1,27 @@
-<style>
-    .info-container{
-        display: flex;
+<button onclick="Clipboard()">Copy Data!</button>
+
+<table id="tabledata">
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Major</th>
+    </tr>
+    {% for i in data%}
+        <tr>
+        {% for j in i%}
+            <td>{{ j }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+
+
+<script>
+    function Clipboard(){
+        alert("hello");
+        var copytext = document.getElementById("tabledata").innerText;
+        navigator.clipboard.writeText(copytext);
     }
-    .info-info{
-        width: 50vw;
-    }
-    .slide{
-        padding-top: 28.12%;
-    }
-
-    .slides{
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-</style>
-
-<h1>Fall</h1>
-{% for instance in object_list %}
-    {% if instance.Semester == "Fall" %}
-    {% if instance.Sno|divisibleby:2 %}
-    <div class="info-container" >
-        <div class="info-info" >
-            <p>GBM {{ instance.Sno}}: {{instance.title}}<br>
-                {{ instance.Desc }}
-            </p>
-        </div>
-        <div class="info-info slide">
-            <iframe class="slides" src="{{ instance.Slides }}" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><br>
-        </div>
-    </div>
-    {% else %}
-    <div  class="info-container" >
-
-        <div class="info-info" >
-            <iframe src="{{ instance.Slides }}" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><br>
-        </div>
-        <div class="info-info" >
-            <p>GBM {{ instance.Sno}}: {{instance.title}}<br>
-                {{ instance.Desc }}
-            </p>
-        </div>
-    </div>
-    {% endif %}
-        <hr>
-    {% endif %}
-{% endfor %}
-
-
-
-<!- flyer to text to slide/// mobile in at screen text to slides on click -->
-<h1>Spring</h1>
-{% for instance in object_list %}
-    {% if instance.Semester == "Sprin" %}
-        <p>{{ instance.Sno}} {{instance.title}}<br>
-            <iframe src="{{ instance.Slides }}" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><br>
-            {{ instance.Desc }}
-        </p>
-        <hr>
-    {% endif %}
-{% endfor %}
-
-<!-- <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSero8HuQTXFZmfahi6TGDaEFL3bruXH2IxVIrDsxkQf5LM86WGr2sUhpzcjnIdEg5ENud0uop5QvJ6/embed?start=true&loop=true&delayms=60000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe> -->
+</script>
