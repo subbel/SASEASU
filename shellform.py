@@ -1,5 +1,6 @@
 from meetings.models import *
 import xlsxwriter
+from django.shortcuts import get_object_or_404
 list = Student.objects.all()
 # FOR EVERY GBM 1 BY 1
 # workbook = xlsxwriter.Workbook("Students.xlsx")
@@ -21,22 +22,20 @@ list = Student.objects.all()
 
 # #
 # workbook.close()
+f = open("data.txt", "r")
+car = f.readlines()
+event = get_object_or_404(Event, title = "GBM 4 F24")
+for i in car:
+    email = i[:-1]
+    student = get_object_or_404(Student, email = email)
+    student.GBM +=1
+    student.events += event.title + " , "
+    event.attendance +=1
+    student.save()
+    event.save()
+    print(email + " " + student.firstname)
 
-for i in list:
-    item = Tester()
-    item.firstname = i.firstname
-    item.lastname = i.lastname
-    item.email = i.email
-    item.ASUID = i.ASUID
-    item.Socials = i.Socials
-    item.GBM = i.GBM
-    item.Industry = i.Industry
 
-    item.graduation_year = i.graduation_year
-    item.discord = i.discord
-    item.year = i.year
-    item.major = i.major
-    item.campus = i.campus
-    item.events = i.events
-    item.save()
+f.close()
+
 # exec(open("shellform.py").read())

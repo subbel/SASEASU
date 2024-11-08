@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.db.models import F
+from django.core.mail import send_mail
 from django.urls import reverse
 from .models import Meetings, Event, Student, StudentForm, Signin
 from django.views.decorators.csrf import csrf_protect
@@ -97,6 +98,25 @@ def signin(request):
                 student.events += event.title + " , "
                 student.save()
                 context = {}
+                emaildropdown = get_object_or_404(Signin, pk =2)
+                emailevent = get_object_or_404(Event, title = emaildropdown.current)
+                oldstudents = ""
+                newstudents = ""
+                x=1
+                list = Student.objects.all()
+                for i in list:
+                    if emailevent.title in i.events:
+                        if request.POST.get("signup"):
+                            newstudents += i.firstname + "\t"+i.lastname + "\t" + i.email + "\t" + i.major + "\t" + i.ASUID + "\t" + i.discord + "\t" + i.year + "\t" + i.campus + "\t" + i.graduation_year +  "\n"
+                        else:
+                            oldstudents += i.firstname + "\t"+i.lastname + "\t" + i.email + "\t" + i.major + "\n"
+                send_mail(
+                    "GBM Data",
+                    oldstudents + "\n\n" + newstudents,
+                    "saseasuwebmaster@gmail.com",
+                    ["saseasuwebmaster@gmail.com"],
+                    fail_silently=False,
+                )
                 return HttpResponseRedirect(reverse("thankyou"))
 
             else:
