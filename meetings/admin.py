@@ -16,7 +16,7 @@ class EventAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry")
 
-    @admin.action(description="Data from event")
+    # @admin.action(description="Data from event")
     def mark_(modeladmin, request, queryset):
         dropdown = get_object_or_404(Signin, pk =2)
         event = get_object_or_404(Event, title = dropdown.current)
