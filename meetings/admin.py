@@ -25,7 +25,6 @@ class StudentAdmin(admin.ModelAdmin):
         for i in queryset:
             if event.title in i.events:
                 stringcsv.append([i.firstname,i.lastname,i.email , i.major])
-        # workbook.close()
         response = render(request, "test01.html", context={"data":stringcsv, "oldpath":"/Students.xlsx"})
         return response
     actions = [mark_]
