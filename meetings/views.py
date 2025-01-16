@@ -14,6 +14,21 @@ def meeting_list_view(request):
     }
     return render(request, "test.html" ,context)
 
+def secretattendance(request, secret):
+    if secret == "ahdnsdkbakjbkhsdhjsdbkasd928647299":
+        dropdown = get_object_or_404(Signin, pk =2)
+        event = get_object_or_404(Event, title = dropdown.current)
+        stringcsv = []
+        queryset = Student.objects.all()
+        x=1
+        for i in queryset:
+            if event.title in i.events:
+                stringcsv.append([i.firstname,i.lastname,i.email , i.major])
+        return render(request, "test01.html", context={"data":stringcsv, "oldpath":"/Students.xlsx"})
+    else:
+        return HttpResponse("nope")
+
+
 @csrf_protect
 def signin(request):
     dropdown = get_object_or_404(Signin, pk =1)
@@ -98,25 +113,6 @@ def signin(request):
                 student.events += event.title + " , "
                 student.save()
                 context = {}
-                emaildropdown = get_object_or_404(Signin, pk =2)
-                emailevent = get_object_or_404(Event, title = emaildropdown.current)
-                oldstudents = ""
-                newstudents = ""
-                x=1
-                list = Student.objects.all()
-                for i in list:
-                    if emailevent.title in i.events:
-                        if request.POST.get("signup"):
-                            newstudents += i.firstname + "\t"+i.lastname + "\t" + i.email + "\t" + i.major + "\t" + i.ASUID + "\t" + i.discord + "\t" + i.year + "\t" + i.campus + "\t" + i.graduation_year +  "\n"
-                        else:
-                            oldstudents += i.firstname + "\t"+i.lastname + "\t" + i.email + "\t" + i.major + "\n"
-                send_mail(
-                    "GBM Data",
-                    oldstudents + "\n\n" + newstudents,
-                    "saseasuwebmaster@gmail.com",
-                    ["saseasuwebmaster@gmail.com"],
-                    fail_silently=False,
-                )
                 return HttpResponseRedirect(reverse("thankyou"))
 
             else:
@@ -136,7 +132,3 @@ def signin(request):
 
 def thank_view(request):
     return render(request, "sign.html")
-
-def download(request, id):
-    response = FileResponse(open("../../Students.xlsx", 'rb'))
-    return response
