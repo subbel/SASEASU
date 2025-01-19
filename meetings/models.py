@@ -80,6 +80,9 @@ class Student(models.Model):
     campus = models.CharField(max_length=50, choices=Campus)
     events = models.TextField()
 
+    # Valid_profile: for checking whether the student has correct/sound information. We'll set all profiles to false for now
+    valid_profile = models.BooleanField(default=False)
+
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
 
@@ -136,6 +139,8 @@ class Tester(models.Model):
     campus = models.CharField(max_length=50, choices=Campus)
     events = models.TextField()
 
+    valid_profile = models.BooleanField(default=False)
+    
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
 

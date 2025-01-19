@@ -7,7 +7,7 @@ from meetings.models import Tester
 
 # Register your models here.
 from .models import Meetings, Event, Student, Signin
-
+print("hello?")
 admin.site.register(Meetings)
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class EventAdmin(admin.ModelAdmin):
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry")
-
+    
     # @admin.action(description="Data from event")
     def mark_(modeladmin, request, queryset):
         dropdown = get_object_or_404(Signin, pk =2)
