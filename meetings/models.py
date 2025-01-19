@@ -72,6 +72,7 @@ class Student(models.Model):
     Socials = models.IntegerField(default=0)
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
+    validprofile = models.BooleanField(default=False)
 
     graduation_year = models.CharField(max_length=50)
     discord = models.CharField(max_length=50)
@@ -79,9 +80,7 @@ class Student(models.Model):
     major = models.CharField(max_length=100,)
     campus = models.CharField(max_length=50, choices=Campus)
     events = models.TextField()
-
-    # Valid_profile: for checking whether the student has correct/sound information. We'll set all profiles to false for now
-    valid_profile = models.BooleanField(default=False)
+    
 
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
@@ -131,6 +130,7 @@ class Tester(models.Model):
     Socials = models.IntegerField(default=0)
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
+    validprofile = models.BooleanField(default=False)
 
     graduation_year = models.CharField(max_length=50)
     discord = models.CharField(max_length=50)
@@ -138,8 +138,6 @@ class Tester(models.Model):
     major = models.CharField(max_length=100,)
     campus = models.CharField(max_length=50, choices=Campus)
     events = models.TextField()
-
-    valid_profile = models.BooleanField(default=False)
     
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
