@@ -72,26 +72,93 @@ class Student(models.Model):
     Socials = models.IntegerField(default=0)
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
-    validprofile = models.BooleanField(default=False)
+    validprofile = models.BooleanField(default=True)
 
     graduation_year = models.CharField(max_length=50)
     discord = models.CharField(max_length=50)
-    year = models.CharField(max_length=20, choices=Year)
+    year = models.CharField(max_length=20)
     major = models.CharField(max_length=100,)
-    campus = models.CharField(max_length=50, choices=Campus)
+    campus = models.CharField(max_length=50,)
     events = models.TextField()
-    
+
 
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
 
-    @classmethod
-    def create(cls, firstname, lastname, year, email):
-        cls(firstname = firstname)
-        cls(lastname = lastname)
-        cls(year = year)
-        cls(email = email)
-        return cls
+    def signup(self, email, firstname, lastname, ASUID, graduation_year, discord, year, major, campus,):
+        self.email = email
+        self.firstname = firstname
+        self.lastname = lastname
+        self.ASUID = ASUID
+        self.graduation_year = graduation_year
+        self.discord = discord
+        self.year = year
+        self.major = major
+        self.campus = campus
+        self.save()
+
+    def update(self, email, firstname, lastname, ASUID, graduation_year, discord, year, major, campus,):
+        if email != "":
+            self.email = email
+        if firstname != "":
+            self.firstname = firstname
+        if lastname != "":
+            self.lastname = lastname
+        if ASUID != "":
+            self.ASUID = ASUID
+        if graduation_year != "":
+            self.graduation_year = graduation_year
+        if discord != "":
+            self.discord = discord
+        if year != "":
+            self.year = year
+        if major != "":
+            self.major = major
+        if campus != "":
+            self.campus = campus
+        self.save()
+
+    def cleanup(self, email, firstname, lastname, ASUID, graduation_year, discord, year, major, campus,):
+        lists = []
+        if email != "":
+            self.email = email
+        else:
+            lists.append("Email")
+        if firstname != "":
+            self.firstname = firstname
+        else:
+            lists.append("Firstname")
+        if lastname != "":
+            self.lastname = lastname
+        else:
+            lists.append("Lastname")
+        if ASUID != "":
+            self.ASUID = ASUID
+        else:
+            lists.append("ASUID")
+        if graduation_year != "":
+            self.graduation_year = graduation_year
+        else:
+            lists.append("Graduation Year")
+        if discord != "":
+            self.discord = discord
+        else:
+            lists.append("Discord")
+        if year != "":
+            self.year = year
+        else:
+            lists.append("Year")
+        if major != "":
+            self.major = major
+        else:
+            lists.append("Major")
+        if campus != "":
+            self.campus = campus
+        else:
+            lists.append("Campus")
+        if len(lists) == 0:
+            self.save()
+        return lists
 
 
 
@@ -138,7 +205,7 @@ class Tester(models.Model):
     major = models.CharField(max_length=100,)
     campus = models.CharField(max_length=50, choices=Campus)
     events = models.TextField()
-    
+
     def __str__(self) -> str:
         return self.firstname + " " + self.lastname
 

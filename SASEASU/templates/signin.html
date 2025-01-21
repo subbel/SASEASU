@@ -31,10 +31,9 @@
                 <input class="asuid-input" type="number" name="asuid" id="asuid" value = "{{asuidactual}}" minlength="10" maxlength="10" required>
                 <label class="signup-label" for="signup">If it is your first time</label>
                 <input class="signup-input" type = "checkbox" name = "signup" id = "signup" onclick="firsttimer()">
-                {% if update %}
+
                 <label class="update-label" for="update">Update/Change Info</label>
-                <input class="update-input" type = "checkbox" name = "update" >
-                {%endif%}
+                <input class="update-input" type = "checkbox" name = "update" id="update" onclick="firsttimer()" >
                 <input class="submit-btn" type = "submit" value = "Sign in" style="grid-column: 1/ span 2; margin-top: 5%; margin-bottom: 5%;">
 
             </center>
@@ -42,19 +41,50 @@
                 <img src="/{{event.flyer }}" class="imgleft" id="imgleft">
                 <center id = "conditionalfirsttimer" class="conditionalfirsttimer">
                     <label class="graduation-label" for="graduationyear">Expected Graduation Year (MM/YYYY): </label>
-                    <input class="graduation-input" type="text" name="graduationyear" id="graduationyear" >
-                    <label class="discord-label" for="discord">Discord(user#0000): </label>
-                    <input class="discord-input" type="text" name="discord" id="discord" >
+                    <select class="graduation-input" type="text" name="graduationyear" id="graduationyear" >
+                        <option value = ""></option>
+                        <option>Spring 2025</option>
+                        <option>Summer 2025</option>
+                        <option>Fall 2025</option>
+                        <option>Spring 2026</option>
+                        <option>Summer 2026</option>
+                        <option>Fall 2026</option>
+                        <option>Spring 2027</option>
+                        <option>Summer 2027</option>
+                        <option>Fall 2027</option>
+                        <option>Spring 2028</option>
+                        <option>Summer 2028</option>
+                        <option>Fall 2028</option>
+                        <option>Spring 2029</option>
+                        <option>Summer 2029</option>
+                        <option>Fall 2029</option>
+                        <option>Spring 2030</option>
+                        <option>Summer 2030</option>
+                        <option>Fall 2030</option>
+                        <option>Spring 2031</option>
+                        <option>Summer 2031</option>
+                        <option>Fall 2031</option>
+                        <option>Spring 2032</option>
+                        <option>Summer 2032</option>
+                        <option>Fall 2032</option>
+                        <option>Spring 2033</option>
+                        <option>Summer 2033</option>
+                        <option>Fall 2033</option>
+                    </select>
+                    <label class="discord-label" for="discord">Discord: </label>
+                    <input class="discord-input" type="text" name="discord" id="discord" placeholder={{discordactual}}>
                     <label class="year-label" for="year">Year: </label>
                     <select class="year-input" id="year" name="year" >
+                        <option value = ""></option>
                         <option value="Freshman">Freshman</option>
                         <option value="Sophomore">Sophomore</option>
                         <option value="Junior">Junior</option>
                         <option value="Senior">Senior</option>
-                        <option value="Grad">Grad</option>
+                        <option value="Grad">Graduate</option>
                     </select>
                     <label class="dropdown-label" for="major_dropdown">Major: </label>
-                    <select class="dropdown-input" id="major_dropdown" name = "major_dropdown" >
+                    <select class="dropdown-input" id="major_dropdown" name = "major_dropdown">
+                        <option value = ""></option>
                         <option>Aerospace Engineering</option>
                         <option>Biomedical Engineering</option>
                         <option>Chemical Engineering</option>
@@ -71,10 +101,11 @@
                     </select>
                     <div id="major" class="major" >
                         <label class="major-label" type="text" for= "major">Other: </label>
-                        <input class="major-input" name="major" >
+                        <input class="major-input" name="major" id = "major_label">
                     </div>
                     <label class="campus-label" for="campus">Campus: </label>
                     <select class="campus-input" id="campus" name="campus" >
+                        <option value = ""></option>
                         <option value="Tempe">Tempe</option>
                         <option value="West">West</option>
                         <option value="Downtown">Downtown</option>
@@ -85,45 +116,14 @@
         </div>
     </div>
 </form>
-    {% if email %}
+    {% if error %}
         <script>
-            alert("The email is not recognised")
+            errormessage = "{{error}}"
+            alert(errormessage)
         </script>
     {%endif%}
 
-    {% if firstname %}
-    <p> The given firstname is not recognised</p>
-    <p> {{ firstname }}</p>
-    {% endif %}
 
-    {% if lastname %}
-    <p> The given lastname is not recognised</p>
-    <p>{{lastname}}</p>
-    {%endif%}
-
-    {% if asuid %}
-    <p> The asuid is different </p>
-    <p> {{ asuid }} </p>
-    {%endif%}
-
-    {% if firstname or lastname or asuid%}
-        <script>
-            var firstname = "{{firstname}}";
-            var lastname = "{{lastname}}";
-            var asuid = "{{asuid}}";
-            var alertstring = "";
-            if (firstname != ""){
-                alertstring += "The Firstname given does not match our records\n";
-            }
-            if (lastname != ""){
-                alertstring += "The Lastname given does not match our records\n";
-            }
-            if (asuid != ""){
-                alertstring += "The ASUID given does not match our records\n";
-            }
-            alert(alertstring);
-        </script>
-    {%endif%}
 </div>
     </article>
     <script >
@@ -133,19 +133,66 @@
 
 </body>
 
+{% if updateallinfo %}
+
+    <script>
+        var checkbox2 = document.getElementById("update")
+        checkbox2.checked = true
+    </script>
+
+{% endif %}
 <script>
     function firsttimer(){
         var checkbox = document.getElementById("signup");
+        var checkbox2 = document.getElementById("update")
         var divisor = document.getElementById("conditionalfirsttimer")
-
-        if(checkbox.checked){
+        if(checkbox.checked || checkbox2.checked){
             conditionalfirsttimer.style.display = "grid";
             document.getElementById("imgleft").style.display="none";
+            document.getElementById("discord").required = true
+            document.getElementById("graduationyear").required = true
+            document.getElementById("year").required = true
+            document.getElementById("major_dropdown").required = true
+            document.getElementById("campus").required = true
+            if(dropdown.value == "Other"){
+                document.getElementById("major_label").required = true
+            }
         }
         else{
             conditionalfirsttimer.style.display = "none";
             document.getElementById("imgleft").style.display="block";
+            document.getElementById("discord").required = false
+            document.getElementById("graduationyear").required = false
+            document.getElementById("year").required = false
+            document.getElementById("major_dropdown").required = false
+            document.getElementById("campus").required = false
+            document.getElementById("major_label").required = false
         }
+    }
+    var checkbox = document.getElementById("signup");
+    var checkbox2 = document.getElementById("update")
+    var divisor = document.getElementById("conditionalfirsttimer")
+    if(checkbox.checked || checkbox2.checked){
+        conditionalfirsttimer.style.display = "grid";
+        document.getElementById("imgleft").style.display="none";
+        document.getElementById("discord").required = true
+        document.getElementById("graduationyear").required = true
+        document.getElementById("year").required = true
+        document.getElementById("major_dropdown").required = true
+        document.getElementById("campus").required = true
+        if(dropdown.value == "Other"){
+            document.getElementById("major_label").required = true
+        }
+    }
+    else{
+        conditionalfirsttimer.style.display = "none";
+        document.getElementById("imgleft").style.display="block";
+        document.getElementById("discord").required = false
+        document.getElementById("graduationyear").required = false
+        document.getElementById("year").required = false
+        document.getElementById("major_dropdown").required = false
+        document.getElementById("campus").required = false
+        document.getElementById("major_label").required = false
     }
     const dropdown = document.getElementById("major_dropdown")
     const other = document.getElementById("major")
@@ -153,9 +200,11 @@
     dropdown.addEventListener('click', function() {
         if(dropdown.value == "Other"){
             other.style.display = "block"
+            document.getElementById("major_label").required = true
         }
         else{
             other.style.display = "none"
+            document.getElementById("major_label").required = false
         }
     })
 </script>

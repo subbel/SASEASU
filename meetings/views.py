@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, FileResponse
 from django.db.models import F
-from django.core.mail import send_mail
 from django.urls import reverse
-from .models import Meetings, Event, Student, StudentForm, Signin
+from .models import Meetings, Event, Student,  Signin
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.template.context_processors import csrf
 
@@ -15,7 +15,7 @@ def meeting_list_view(request):
     return render(request, "test.html" ,context)
 
 def secretattendance(request, secret):
-    if secret == "ahdnsdkbakjbkhsdhjsdbkasd928647299":
+    if secret == get_object_or_404(User, username = "admin").password[:10]:
         dropdown = get_object_or_404(Signin, pk =2)
         event = get_object_or_404(Event, title = dropdown.current)
         stringcsv = []
@@ -36,10 +36,11 @@ def signin(request):
     context = {}
     context.update(csrf(request))
     context["event"] = event
+    reason_for_error = ""
     if request.method == "POST":
         firstname = request.POST["firstname"].strip().capitalize()
         lastname = request.POST["lastname"].strip().capitalize()
-        email = request.POST["email"].strip()
+        email = request.POST["email"].strip().lower()
         asuid = request.POST["asuid"].strip()
         gradyear = request.POST["graduationyear"].strip()
         discord = request.POST["discord"].strip()
@@ -53,41 +54,66 @@ def signin(request):
         context["lastnameactual"] = lastname
         context["emailactual"] = email
         context["asuidactual"] = asuid
-        try:
-            if request.POST.get("signup"):
-                temp_stud = Student()
-                temp_stud.email = email
-                temp_stud.firstname = firstname
-                temp_stud.lastname = lastname
-                temp_stud.ASUID = asuid
-                temp_stud.graduation_year = gradyear
-                temp_stud.discord = discord
-                temp_stud.year = year
-                temp_stud.major = major
-                temp_stud.campus = campus
-                temp_stud.save()
-            error = False
-            student = Student.objects.get(email = request.POST["email"])
-            if event.title in student.events:
-                return HttpResponseRedirect(reverse("thankyou"))
-            if request.POST.get("update"):
-                student.firstname = firstname
-                student.lastname = lastname
-                student.ASUID = asuid
-            else:
-                if firstname != student.firstname:
-                    context["firstname"] = firstname
+        context["discordactual"] = discord
+        context["gradactual"] = gradyear
+        context["yearactual"] = year
+        context["campusactual"] = campus
+        context["majoractual"] = major
+        error = False
+        if request.POST.get("signup"):
+            try:
+                student = Student.objects.get(email = email)
+                if student.ASUID == asuid:
+                    student.update(email, firstname, lastname, asuid, gradyear, discord, year, major, campus,)
+                else:
+                    raise Exception("asuid was not matching")
+            except Student.DoesNotExist:
+                student = Student()
+                student.signup(email, firstname, lastname, asuid, gradyear, discord, year, major, campus,)
+            except:
+                error = True
+                reason_for_error = "Your Email is registered with us already but your ASUID is incorrect. Thank you :)"
+        elif request.POST.get("update"):
+            try:
+                student = Student.objects.get(email = email)
+                if student.ASUID == asuid:
+                    student.update(email, firstname, lastname, asuid, gradyear, discord, year, major, campus,)
+                else:
+                    raise Exception("asuid ws not matching")
+            except Student.DoesNotExist:
+                error = True
+                reason_for_error = "Email is unregistered/incorrect. Thank you :)"
+            except:
+                error = True
+                reason_for_error = "Your Email is correct but your ASUID is incorrect. Thank you :)"
+        else:
+            try:
+                student = Student.objects.get(email = email)
+                if student.ASUID == asuid:
+                    student.update(email, firstname, lastname, asuid, gradyear, discord, year, major, campus,)
+                else:
+                    raise Exception("asuid ws not matching")
+            except Student.DoesNotExist:
+                error = True
+                reason_for_error = "Email is unregistered/incorrect. Thank you :)"
+            except:
+                error = True
+                reason_for_error = "Your Email is correct but your ASUID is incorrect. Thank you :)"
+        if error == False:
+            if student.validprofile == False:
+                checking = student.cleanup(email, firstname, lastname, asuid, gradyear, discord, year, major, campus,)
+                if len(checking) != 0:
                     error = True
-                if lastname != student.lastname:
-                    context["lastname"] = lastname
-                    error = True
-                if asuid!= student.ASUID:
-                    context["asuid"] = asuid
-                    error = True
-            if error == False:
+                    reason_for_error = "Your previous info was found incorrect, please fill out the entire form. Thank you :)"
+                    context["updateallinfo"] = "True"
+                else:
+                    student.validprofile = True
+                    student.save()
+                    error = False
+        if error == False:
+            if event.title not in student.events:
                 event.attendance = F("attendance") + 1
                 event.save()
-                # eventevent.type
                 typo = event.type
                 if typo == "1":
                     student.GBM += 1
@@ -114,20 +140,12 @@ def signin(request):
                 student.save()
                 context = {}
                 return HttpResponseRedirect(reverse("thankyou"))
-
-            else:
-                # context["email"] = email
-                context["update"] = "update button"
-        except(Student.DoesNotExist):
-            context["error"] = "Email doesnt exist"
-            context["email"] = request.POST["email"]
-        except(Student.MultipleObjectsReturned):
-            list = Student.objects.filter(email = request.POST["email"])
-            for i in list[1:]:
-                if i.email == request.POST["email"]:
-                    i.delete()
-            return HttpResponseRedirect(reverse("thankyou"))
-    # request.POST[email] = "hello@asu.edu"
+            elif event.title in student.events:
+                return HttpResponseRedirect(reverse("thankyou"))
+        else:
+            context["error"] = reason_for_error
+        if error == True:
+            context["error"] = reason_for_error
     return render(request, "signin.html", context)
 
 def thank_view(request):

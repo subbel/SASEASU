@@ -9,7 +9,4 @@ for event in events:
     print(event.title, " Attendance : ", event.attendance)
 
 
-
-
-
 # exec(open("shellform.py").read())
