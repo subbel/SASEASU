@@ -5,6 +5,36 @@
     .nav{
         background-color:#2b90d9;
     }
+
+    .flexbox {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .flexform {
+        order: 1;
+    }
+    .fleximg {
+        order: 2;
+        margin-left: 20px;
+    }
+
+    @media (max-width: 900px) {
+        .flexbox {
+            marign-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .flexform {
+            order: 2;
+        }
+        .fleximg {
+            order: 1;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
 </style>
 <body>
     {% extends "base.html" %}
