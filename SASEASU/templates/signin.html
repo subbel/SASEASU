@@ -25,7 +25,7 @@
             flex-direction: column;
             align-items: center;
         }
-    
+
         .flexform {
             order: 2;
         }
@@ -127,7 +127,7 @@
                         <option>Mechanical Engineering</option>
                         <option>Software Engineering</option>
                         <option>Materials Science & Engineering</option>
-                        <option>Other</option>
+                        <option value = "Other">Other</option>
                     </select>
                     <div id="major" class="major" >
                         <label class="major-label" type="text" for= "major">Other: </label>
@@ -172,6 +172,8 @@
 
 {% endif %}
 <script>
+    const dropdown = document.getElementById("major_dropdown")
+    const other = document.getElementById("major")
     function firsttimer(){
         var checkbox = document.getElementById("signup");
         var checkbox2 = document.getElementById("update")
@@ -212,6 +214,7 @@
         document.getElementById("campus").required = true
         if(dropdown.value == "Other"){
             document.getElementById("major_label").required = true
+            other.style.display = "block"
         }
     }
     else{
@@ -223,9 +226,11 @@
         document.getElementById("major_dropdown").required = false
         document.getElementById("campus").required = false
         document.getElementById("major_label").required = false
+        if(dropdown.value == "Other"){
+            document.getElementById("major_label").required = false
+        }
     }
-    const dropdown = document.getElementById("major_dropdown")
-    const other = document.getElementById("major")
+
 
     dropdown.addEventListener('click', function() {
         if(dropdown.value == "Other"){
