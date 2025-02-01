@@ -93,33 +93,25 @@
 
 
 
-  /* FOOTER */
-   footer{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5%;
-    background-color: #282c37;
-    color: #d9e1e8;
-   }
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center;     /* Center the content vertically */
+  margin-top: 5%;
+  background-color: s#282c37;
+  color: #d9e1e8;
+  padding: 20px 0; /* Add padding for some spacing */
+}
 
-   footer div{
-    display: flex;
-    flex-direction: column;
-   }
-   .insta{
-    width: 100px;
-    height: 30px;
-    fill: #d9e1e8;
-   }
+footer div {
+  display: flex;
+  justify-content: center; /* Ensure the icons are horizontally aligned */
+  gap: 20px; /* Space between icons */
+}
 
-   .discord{
-    width: 30px;
-    height: 30px;
-    fill: #d9e1e8;
-   }
-
-   .linktree{
-    width: 30px;
-    height: 30px;
-    fill: #d9e1e8;
-   }
+.insta, .discord, .linktree {
+  width: 30px; /* Set a consistent width for all icons */
+  height: 30px; /* Set a consistent height for all icons */
+  fill: #d9e1e8; /* Set the icon color */
+}
