@@ -26,11 +26,8 @@ SECRET_KEY = '2dauto3)x^zh!)(_&tsfbaqj@9dkhf*ag9&f*g$rc#w@z6cnaz'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'saseasu-fqdzh8bef4b7bpfj.canadacentral-01.azurewebsites.net',
-    'saseasu.pythonanywhere.com',
+    '*'
 ]
-
 
 # Application definition
 

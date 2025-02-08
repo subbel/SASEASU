@@ -20,6 +20,8 @@ cd SASEASU
 
 #Create a virtual environment for testing
 python -m venv venv
+#For Mac:
+python3 -m venv venv
 
 #(Make sure you use venv as the vurtual env. name, otherwise make sure you're virtual environment is added to .gitignore)
 
@@ -33,6 +35,8 @@ pip install -r requirements.txt
 
 #Run the app
 python manage.py runserver
+#For Mac:
+python3 manage.py runserver
 
 #(You can use python3 for your commands if that is what is required)
 ```
