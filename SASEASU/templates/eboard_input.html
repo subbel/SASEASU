@@ -1,0 +1,25 @@
+<head>
+    <link rel="stylesheet" href="/static/input.css">
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <article>
+
+    </article>
+    <script >
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+          if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
+            document.getElementById("navbar").style.backgroundColor = "#2b90d9";
+            document.getElementById("navbar").style.transition = "500ms";
+          } else {
+            document.getElementById("navbar").style.backgroundColor = "#2b90d9";
+          }
+        }
+      </script>
+    {% endblock %}
+</body>
+</html>
