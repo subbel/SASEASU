@@ -14,20 +14,6 @@ def meeting_list_view(request):
     }
     return render(request, "test.html" ,context)
 
-def secretattendance(request, secret):
-    if secret == get_object_or_404(User, username = "admin").password[:10]:
-        dropdown = get_object_or_404(Signin, pk =2)
-        event = get_object_or_404(Event, title = dropdown.current)
-        stringcsv = []
-        queryset = Student.objects.all()
-        x=1
-        for i in queryset:
-            if event.title in i.events:
-                stringcsv.append([i.firstname,i.lastname,i.email , i.major])
-        return render(request, "test01.html", context={"data":stringcsv, "oldpath":"/Students.xlsx"})
-    else:
-        return HttpResponse("nope")
-
 
 @csrf_protect
 def signin(request):
@@ -148,5 +134,36 @@ def signin(request):
             context["error"] = reason_for_error
     return render(request, "signin.html", context)
 
+def eboard_input_view(request):
+    meetings = Meetings.objects.all()
+    students = Student.objects.all()
+    Signing = Signin.objects.all()
+
+    return render(request, "eboard_input.html", context={"meetings" : meetings, "students":students, "signin":Signing})
+
 def thank_view(request):
     return render(request, "sign.html")
+
+def home_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "home.html", {})
+
+def about_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "about.html", {})
+
+def eboard_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "eboard.html", {})
+
+def gallery_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "gallery.html", {})
+
+def donate_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "donate.html", {})
+
+def meetings_view(request, *args, **kwargs):
+    # return HttpResponse("<h1> Hello World <h1>")
+    return render(request, "meetings.html", {})

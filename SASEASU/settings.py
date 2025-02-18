@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages',
     'meetings.apps.MeetingsConfig',
 ]
 
@@ -78,12 +77,22 @@ WSGI_APPLICATION = 'SASEASU.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'testing.sqlite3'),
+        }
     }
-}
+elif DEBUG == False:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+
+
 
 
 # Password validation
@@ -129,11 +138,3 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
   os.path.join(BASE_DIR, 'static/Images'),
 )
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'saseasuwebmaster@gmail.com'
-EMAIL_HOST_PASSWORD = 'ynkn yrhs rxns zugp'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
