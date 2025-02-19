@@ -72,6 +72,8 @@ class Student(models.Model):
     Socials = models.IntegerField(default=0)
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
+    Volunteering = models.IntegerField(default=0)
+    registration_payment = models.BooleanField(default = False)
     validprofile = models.BooleanField(default=True)
 
     graduation_year = models.CharField(max_length=50)
