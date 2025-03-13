@@ -12,7 +12,7 @@ from .models import Meetings, Event, Student, Signin
 admin.site.register(Meetings)
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ("title", "attendance", "type")
+    list_display = ("name", "title", "attendance", "type")
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
