@@ -42,6 +42,7 @@ html[data-theme="light"],
     --selected-bg: #e4e4e4; /* E.g. selected table cells */
     --selected-row: #ffc;
 
+    /* fg = foreground; bg = background */
     --button-fg: #fff;
     --button-bg: var(--secondary);
     --button-hover-bg: #205067;

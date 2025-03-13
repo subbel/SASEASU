@@ -77,17 +77,8 @@ header h1{
 * */
 
 /* Just estimating min-widths; can be changed later... */
-@media (min-width: 1900px){
-
-}
-@media (min-width: 1500px){
-
-}
-@media (min-width: 1360px){
-
-}
-@media (min-width: 1200px){
-
+@media (min-width: 1300px){
+  /* "normal" dimensions on my laptop */
 }
 @media (min-width: 1000px){
 
