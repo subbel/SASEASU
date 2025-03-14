@@ -55,6 +55,7 @@ Campus = (
 )
 
 class Event(models.Model):
+    name = models.CharField(max_length=200)
     title = models.CharField(max_length=100)
     attendance = models.IntegerField(default=0)
     type = models.CharField(max_length=20, choices= Type_CHOICES, default= 'None')
@@ -62,7 +63,7 @@ class Event(models.Model):
     flyer = models.ImageField(upload_to="static/Flyers/")
 
     def __str__(self) -> str:
-        return self.title
+        return self.name
 
 class Student(models.Model):
     firstname = models.CharField(blank=False, max_length = 50)
