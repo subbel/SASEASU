@@ -18,7 +18,7 @@ def meeting_list_view(request):
 @csrf_protect
 def signin(request):
     dropdown = get_object_or_404(Signin, pk =1)
-    event = get_object_or_404(Event, title = dropdown.current)
+    event = get_object_or_404(Event, title = dropdown.current.title)
     context = {}
     context.update(csrf(request))
     context["event"] = event
