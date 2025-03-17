@@ -1,71 +1,100 @@
-  /* HEADER Content */
-  header{
-    background-image: url("/static/Images/eboard/header.jpg");
-    height: 78vh;
-    background-size:cover;
-    background-position: 83% 17%;
-  }
+/* HEADER Content */
+header{
+  background-image: url("/static/Images/eboard/header.jpg");
+  width: 100vw;
+  height: 78vh;
+  background-size:cover;
+  background-position: 83% 17%;
+}
 
-  header h1{
-    text-align: center;
-    padding-top: 20%;
-    padding-bottom: auto;
-    color: #d9e1e8;
-    font-size: 50;
-  }
+header h1{
+  text-align: center;
+  padding-top: 20%;
+  padding-bottom: auto;
+  color: #d9e1e8;
+  font-size: 50;
+}
 
-  .article-heading{
-    color:#37b24d;
+.article-heading{
+  color:#37b24d;
 
-  }
-  .article-content{
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: 2%;
-    text-align: center;
-    width: 85vw;
-  }
+}
+.article-content{
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 2%;
+  text-align: center;
+  width: 85vw;
+}
 
-  .article-content p{
-    font-size:20;
-    padding-top: 2%;
-  }
+.article-content p{
+  font-size:20;
+  padding-top: 2%;
+}
 
-  .role-table{
-    margin-top: 25px;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    justify-items: center;
-    align-items: center;
-    row-gap: 30px;
-  }
+.role-table{
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-items: center;
+  align-items: center;
+  row-gap: 30px;
+}
 
-  .image-container {
-    position: relative;
-    width: 300px;
-    overflow: hidden;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    transition: filter 0.3s ease;
-  }
-  .overlay-text {
-    position: absolute;
-    align-items: center;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .image-container:hover img {
-    filter: blur(15px);
-  }
+.image-container {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+}
+.overlay-text {
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.image-container:hover img {
+  filter: blur(15px);
+}
 
-  .image-container:hover .overlay-text {
-    opacity: 1;
-  }
+.image-container:hover .overlay-text {
+  opacity: 1;
+}
+/* Common Resolutions
+*  Desktop: 1920x1080, 1366x768, 1536x864, 1280x720
+*  Mobile: 360x800, 390x844, 393x873, 412x915
+*  Tablet: 768x1024, 1280x800, 800x1280, 820x1180
+* */
+
+/* Just estimating min-widths; can be changed later... */
+@media (min-width: 1300px){
+  /* "normal" dimensions on my laptop */
+}
+@media (min-width: 1000px){
+
+}
+@media (min-width: 900px){
+
+}
+@media (min-width: 750px){
+
+}
+@media (min-width: 500px){
+
+}
+@media (min-width: 400px){
+
+}
+@media (min-width: 300px){
+
+}
