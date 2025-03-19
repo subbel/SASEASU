@@ -3,10 +3,8 @@ import xlsxwriter
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
-from meetings.models import Tester
-
 # Register your models here.
-from .models import Meetings, Event, Student, Signin
+from .models import Meetings, Event, Student, Current
 
 
 admin.site.register(Meetings)
@@ -18,8 +16,8 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
 
     def mark(modeladmin, request, queryset):
-        dropdown = get_object_or_404(Signin, pk =2)
-        event = get_object_or_404(Event, title = dropdown.current)
+        dropdown = get_object_or_404(Current, pk =1)
+        event = get_object_or_404(Event, title = dropdown.current_attendance.title)
         stringcsv = []
         x=1
         for i in queryset:
@@ -35,7 +33,7 @@ class StudentAdmin(admin.ModelAdmin):
         return render(request, "test01.html", context={"data":list_of_active})
 
     actions = [mark, active]
-admin.site.register(Signin)
+admin.site.register(Current)
 
 class MeetingsAdmin(admin.ModelAdmin):
     pass
