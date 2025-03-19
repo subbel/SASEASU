@@ -6,7 +6,13 @@
 
     {% block content %}
     <article>
-
+      <center class="EventForm">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" value="Submit">
+        </form>
+      </center>
     </article>
     <script >
         window.onscroll = function() {scrollFunction()};
