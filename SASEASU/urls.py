@@ -28,7 +28,8 @@ urlpatterns = [
     path('signin/', signin, name="signin"),
     path("test/", meeting_list_view),
     path("thanks/", thank_view, name="thankyou"),
-    path("secret/", eboard_input_view, name = "secret")
+    path("secret/", eboard_input_view, name = "secret"),
+    # path('admin/?next=/secret/', eboard_input_view, name = "secretredirect")
     # path('student/', include('membership.urls'))
     # path("signups/", new_user)
 ]

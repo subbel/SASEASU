@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, FileResponse
+from django.http import HttpResponseRedirect
 from django.db.models import F
 from django.urls import reverse
-from .models import Meetings, Event, Student,  Signin
-from django.contrib.auth.models import User
+from .models import Meetings, Event, Student,  Current, EventForm
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.template.context_processors import csrf
 
@@ -17,8 +17,8 @@ def meeting_list_view(request):
 
 @csrf_protect
 def signin(request):
-    dropdown = get_object_or_404(Signin, pk =1)
-    event = get_object_or_404(Event, title = dropdown.current)
+    dropdown = get_object_or_404(Current, pk =1)
+    event = get_object_or_404(Event, title = dropdown.current_event.title)
     context = {}
     context.update(csrf(request))
     context["event"] = event
@@ -122,6 +122,12 @@ def signin(request):
                     student.Socials +=1
                     student.Industry += 1
                     student.save()
+                elif typo == "7":
+                    student.Volunteering +=1
+                    student.save()
+                elif typo == "7":
+                    student.GBM +=1
+                    student.save()
                 student.events += event.title + " , "
                 student.save()
                 context = {}
@@ -134,12 +140,41 @@ def signin(request):
             context["error"] = reason_for_error
     return render(request, "signin.html", context)
 
+@login_required(login_url="/admin/login/?next=/secret/")
 def eboard_input_view(request):
-    meetings = Meetings.objects.all()
-    students = Student.objects.all()
-    Signing = Signin.objects.all()
-
-    return render(request, "eboard_input.html", context={"meetings" : meetings, "students":students, "signin":Signing})
+    if request.method == "POST":
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_Event = Event()
+            new_Event.name = str(form.cleaned_data.get("name"))+" " + Current.objects.all()[0].current_term
+            new_Event.type = form.cleaned_data.get("type")
+            new_Event.date = form.cleaned_data.get("date")
+            new_Event.flyer = form.cleaned_data.get("flyer")
+            new_Event.attendance = 0
+            if(form.cleaned_data.get("type") == "1"):
+                new_Event.title = "GBM " + str(Event.findeventnum("GBM")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "2"):
+                new_Event.title = "Social " + str(Event.findeventnum("Social")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "3"):
+                new_Event.title = "Industry " + str(Event.findeventnum("Industry")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "4"):
+                new_Event.title = "GBM " + str(Event.findeventnum("GBM")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "5"):
+                new_Event.title = "GBM " + str(Event.findeventnum("GBM")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "6"):
+                new_Event.title = "Industry " + str(Event.findeventnum("Industry")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "7"):
+                new_Event.title = "Volunteering " + str(Event.findeventnum("Volunteering")) +" " + Current.objects.all()[0].current_term
+            elif(form.cleaned_data.get("type") == "8"):
+                new_Event.title = "Workshop " + str(Event.findeventnum("Workshop")) +" " + Current.objects.all()[0].current_term
+            else:
+                print("Invalid")
+            new_Event.save()
+            print(new_Event.title)
+            return HttpResponseRedirect("/thanks/")
+    else:
+        form = EventForm()
+    return render(request, "eboard_input.html", {"form" : form})
 
 def thank_view(request):
     return render(request, "sign.html")
