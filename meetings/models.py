@@ -195,6 +195,5 @@ class Current(models.Model):
     current_event = models.ForeignKey(Event, related_name='current_event', on_delete=models.CASCADE)
     current_attendance = models.ForeignKey(Event, related_name='current_attendance', on_delete=models.CASCADE)
     current_term = models.CharField(max_length=20)
-
     class Meta:
         verbose_name_plural = "Current"
