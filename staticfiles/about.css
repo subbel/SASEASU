@@ -7,20 +7,21 @@
   }
 
   .article-heading{
-    color:#37b24d;
-
+    color:#37b24d; 
+    text-align: center;
   }
   .article-content{
+    text-align: left;
     margin-left:auto;
     margin-right: auto;
     margin-top: 2%;
-    text-align: center;
-    width: 85vw;
+    width: 60vw;
   }
 
   .article-content p{
-    font-size:20;
+    font-size: 20;
     padding-top: 2%;
+    text-indent: 20px;
   }
 
   .img-grid{
@@ -34,4 +35,15 @@
   .img-grid div img{
     width: 40vw;
     margin-top: 4%;
+  }
+
+
+  @media (max-width:500px){
+    .article-content{
+      text-align: left;
+      margin-left:auto;
+      margin-right: auto;
+      margin-top: 2%;
+      width: 80vw;
+    }
   }
