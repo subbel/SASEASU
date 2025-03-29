@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.template.context_processors import csrf
 
+#test form
+from .forms import NameForm 
+from .forms import EventForm
+
+
 def meeting_list_view(request):
     queryset = Meetings.objects.all()
     context = {
@@ -167,3 +172,28 @@ def donate_view(request, *args, **kwargs):
 def meetings_view(request, *args, **kwargs):
     # return HttpResponse("<h1> Hello World <h1>")
     return render(request, "meetings.html", {})
+
+
+#test form
+def get_name(request):
+    if request.method == "POST":
+        form = NameForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("/thanks")
+    else: 
+        form = NameForm()
+    return render(request, "name.html", {"form": form})
+
+def create_event(request):
+    if request.method == "POST":
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/events")
+    else:
+        form = EventForm()
+
+    return render(request, "event_create.html", {"form": form})
+
+def event_success_view(request):
+    return render(request, "events.html")
