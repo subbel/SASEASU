@@ -89,7 +89,6 @@ class Student(models.Model):
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
     Volunteering = models.IntegerField(default=0)
-    registration_payment = models.BooleanField(default = False)
     validprofile = models.BooleanField(default=True)
 
     graduation_year = models.CharField(max_length=50)
@@ -177,6 +176,14 @@ class Student(models.Model):
         if len(lists) == 0:
             self.save()
         return lists
+
+class ActiveStudent(models.Model):
+    # use the html -- eboard_input.html
+    email = models.CharField(max_length=100) # go through db with email, double check with student ID; check their attendance through email/ID
+    ASUID = models.CharField(max_length=10)
+    paid_dues = models.BooleanField(blank=True) # blank=True means the field is optional
+    active_date_start = models.DateTimeField(null=True, blank=True)
+    active_date_end = models.DateTimeField(null=True, blank=True)
 
 class Meetings(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)

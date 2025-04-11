@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from meetings.views import meeting_list_view, signin, thank_view, home_view, about_view, eboard_view, gallery_view, donate_view, meetings_view, eboard_input_view
+from meetings.views import meeting_list_view, signin, thank_view, home_view, about_view, eboard_view, gallery_view, donate_view, meetings_view, eboard_input_view, eboard_active_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path("test/", meeting_list_view),
     path("thanks/", thank_view, name="thankyou"),
     path("secret/", eboard_input_view, name = "secret"),
+    path("active/", eboard_active_view, name="active"),
     # path('admin/?next=/secret/', eboard_input_view, name = "secretredirect")
     # path('student/', include('membership.urls'))
     # path("signups/", new_user)

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.db.models import F
 from django.urls import reverse
-from .models import Meetings, Event, Student,  Current, EventForm
+from .models import Meetings, Event, Student,  Current, EventForm, ActiveStudent
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.template.context_processors import csrf
@@ -13,7 +13,6 @@ def meeting_list_view(request):
         "object_list": queryset
     }
     return render(request, "test.html" ,context)
-
 
 @csrf_protect
 def signin(request):
@@ -144,6 +143,7 @@ def signin(request):
 def eboard_input_view(request):
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
+        # activeStudentForm = ActiveStudent(request.POST, request.FILES)
         if form.is_valid():
             new_Event = Event()
             new_Event.name = str(form.cleaned_data.get("name"))+" " + Current.objects.all()[0].current_term
@@ -173,8 +173,17 @@ def eboard_input_view(request):
             print(new_Event.title)
             return HttpResponseRedirect("/thanks/")
     else:
-        form = EventForm()
-    return render(request, "eboard_input.html", {"form" : form})
+        form = EventForm() 
+    return render(request, "eboard_input.html", {"form" : form}) # {"form":form} is hmtl context (form of a dictionary)
+
+@login_required(login_url="/admin/login/?next=/active/")
+def eboard_active_view(request):
+    if request.method == "POST":
+        form = ActiveStudent(request.POST, request.FILES)        
+    else:
+        form = ActiveStudent() 
+    return render(request, "eboard_input.html", {"form" : form}) # {"form":form} is hmtl context (form of a dictionary)
+
 
 def thank_view(request):
     return render(request, "sign.html")
@@ -202,3 +211,5 @@ def donate_view(request, *args, **kwargs):
 def meetings_view(request, *args, **kwargs):
     # return HttpResponse("<h1> Hello World <h1>")
     return render(request, "meetings.html", {})
+
+

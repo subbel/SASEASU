@@ -9,7 +9,7 @@
       <center class="EventForm">
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          {{ form }}
+          {{ form }} <!-- accessing the form that is given as context in views.py eboard_inputview (def) -->
           <input type="submit" value="Submit">
         </form>
       </center>
