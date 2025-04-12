@@ -54,7 +54,6 @@ img, video, iframe {
 }
 
 nav {
-  height: 70px; /*match the height of the footer*/
   position: fixed;
   top: 0;
   width: 100%;
@@ -95,13 +94,14 @@ nav ul li:hover a {
 
 /* Footer Styles */
 footer {
-  height: 70px; 
+  height: 70px; /* Match navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #282c37;
   color: #d9e1e8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
+  padding: 0; /* Remove extra spacing */
+  margin-top: auto;
 }
 
 .footer-div {
@@ -110,14 +110,12 @@ footer {
   align-items: center;
 }
 
-/* Ensure SVG icons are centered and sized properly */
+
 .footer-div svg {
   width: 30px;
   height: 30px;
   fill: #d9e1e8;
-  display: block;
 }
-
 
 .insta, .discord, .linktree {
   width: 30px;
