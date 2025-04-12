@@ -179,7 +179,19 @@ def eboard_input_view(request):
 @login_required(login_url="/admin/login/?next=/active/")
 def eboard_active_view(request):
     if request.method == "POST":
-        form = ActiveStudent(request.POST, request.FILES)        
+        form = ActiveStudent(request.POST, request.FILES)
+        if form.is_valid():
+            new_Student = ActiveStudent()
+            new_Student.email = str(form.cleaned_data.get("email"))
+            new_Student.ASUID = str(form.cleaned_data.get("asuid"))
+            new_Student.paid_dues = bool(form.cleaned_data.get("paid_dues"))
+            new_Student.active_date_start = form.cleaned_data.get("active_date_start")
+            new_Student.active_date_end = form.cleaned_data.get("active_date_end")            
+            new_Student.save()
+            # print(new_Student.title)
+            return HttpResponseRedirect("/thanks/")  
+        else:
+            print("Invalid active student form!")     
     else:
         form = ActiveStudent() 
     return render(request, "eboard_input.html", {"form" : form}) # {"form":form} is hmtl context (form of a dictionary)

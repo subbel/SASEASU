@@ -180,10 +180,60 @@ class Student(models.Model):
 class ActiveStudent(models.Model):
     # use the html -- eboard_input.html
     email = models.CharField(max_length=100) # go through db with email, double check with student ID; check their attendance through email/ID
-    ASUID = models.CharField(max_length=10)
+    asuid = models.CharField(max_length=10)
     paid_dues = models.BooleanField(blank=True) # blank=True means the field is optional
     active_date_start = models.DateTimeField(null=True, blank=True)
     active_date_end = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.email + ", " + self.asuid
+    
+    def save_student(self, email, asuid, paid_dues, active_date_start, active_date_end,):
+        self.email = email
+        self.asuid = asuid
+        self.paid_dues = paid_dues
+        self.active_date_start = active_date_start
+        self.active_date_end = active_date_end
+        self.save()
+
+    def update(self, email, asuid, paid_dues, active_date_start, active_date_end,):
+        if email != "":
+            self.email = email
+        if asuid != "":
+            self.asuid = asuid
+        if paid_dues != self.paid_dues:
+            self.paid_dues = paid_dues
+        if active_date_start != self.active_date_start:
+            self.active_date_start = active_date_start
+        if active_date_end != self.active_date_end:
+            self.active_date_end = active_date_end
+        self.save()
+
+    def cleanup(self, email, asuid, paid_dues, active_date_start, active_date_end,):
+        lists = []
+        if email != "":
+            self.email = email
+        else:
+            lists.append("Email")
+        if asuid != "":
+            self.asuid = asuid
+        else:
+            lists.append("ASUID")
+        if paid_dues != self.paid_dues:
+            self.paid_dues = paid_dues
+        else:
+            lists.append("Paid_dues")
+        if active_date_start != self.active_date_start:
+            self.active_date_start = active_date_start
+        else:
+            lists.append("Active date start")
+        if active_date_end != self.active_date_end:
+            self.active_date_end = active_date_end
+        else:
+            lists.append("Active date end")
+        if len(lists) == 0:
+            self.save()
+        return lists
 
 class Meetings(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
