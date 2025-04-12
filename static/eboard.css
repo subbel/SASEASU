@@ -1,71 +1,84 @@
-  /* HEADER Content */
-  header{
-    background-image: url("/static/Images/eboard/header.jpg");
-    height: 78vh;
-    background-size:cover;
-    background-position: 83% 17%;
-  }
+/* HEADER Content */
+header {
+  background-image: url("/static/Images/eboard/header.jpg");
+  height: 78vh;
+  background-size: cover;
+  background-position: 83% 17%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  header h1{
-    text-align: center;
-    padding-top: 20%;
-    padding-bottom: auto;
-    color: #d9e1e8;
-    font-size: 50;
-  }
+header h1 {
+  text-align: center;
+  color: #d9e1e8;
+  font-size: 3rem;
+  margin: 0;
+}
 
-  .article-heading{
-    color:#37b24d;
+/* Article Heading */
+.article-heading {
+  color: #37b24d;
+}
 
-  }
-  .article-content{
-    margin-left:auto;
-    margin-right: auto;
-    margin-top: 2%;
-    text-align: center;
-    width: 85vw;
-  }
+/* Article Content */
+.article-content {
+  margin: 2% auto 0 auto;
+  text-align: center;
+  width: 85vw;
+}
 
-  .article-content p{
-    font-size:20;
-    padding-top: 2%;
-  }
+.article-content p {
+  font-size: 1.25rem;
+  padding-top: 2%;
+}
 
-  .role-table{
-    margin-top: 25px;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    justify-items: center;
-    align-items: center;
-    row-gap: 30px;
-  }
+/* Grid Layout for Roles */
+.role-table {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+}
 
-  .image-container {
-    position: relative;
-    width: 300px;
-    overflow: hidden;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    transition: filter 0.3s ease;
-  }
-  .overlay-text {
-    position: absolute;
-    align-items: center;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .image-container:hover img {
-    filter: blur(15px);
-  }
+/* Image Card Style */
+.image-container {
+  width: 100%;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto; /* ✅ ensures true centering */
+}
 
-  .image-container:hover .overlay-text {
-    opacity: 1;
-  }
+.image-container img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s ease;
+  border-radius: 8px;
+}
+
+.overlay-text {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 0 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.image-container:hover img {
+  filter: blur(15px);
+}
+
+.image-container:hover .overlay-text {
+  opacity: 1;
+}
