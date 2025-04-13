@@ -46,7 +46,7 @@ header{
   /* MEAT AND POTATOES */
 
   .gallery-container{
-    margin-top: 5%  ;
+    margin-bottom: 10%;
     display: flex;
     flex-direction: row;
     gap: 3%;
