@@ -1,15 +1,16 @@
 /* HEADER Content */
 header{
     background-image: url("/static/Images/Events/banner.jpeg");
-    height: 75vh;
+    height: 60vh;
     background-size:cover;
-    background-position: 45% 55%;
+    background-position: 45% 30%;
     text-align: center;
   }
 
   .header-text{
-    font-size: 100px;
-    color: #d9e1e8;;
+    font-size: 2.5rem;
+    color: #d9e1e8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     padding-top:20% ;
   }
 
