@@ -1,19 +1,24 @@
 /* HEADER Content */
 header {
   background-image: url("/static/Images/eboard/header.jpg");
-  height: 78vh;
+  height: 75vh;
   background-size: cover;
-  background-position: 83% 17%;
+  background-position: 83% 65%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 header h1 {
-  text-align: center;
+  font-size: 2.5rem;
   color: #d9e1e8;
-  font-size: 3rem;
-  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+header h3 {
+  font-size: 1.5rem;
+  color: #d9e1e8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Article Heading */
