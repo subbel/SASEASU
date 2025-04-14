@@ -7,6 +7,13 @@ header{
     background-position: 10%;
   }
 
+  .article-heading {
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.75rem;
+    color: #37b24d;
+    margin-bottom: 1rem;
+  }
+
   .top-row-heading{
     text-align: center;
     margin-top: 6%;
@@ -27,14 +34,21 @@ header{
     font-family: 'Sofia Sans Condensed', sans-serif;
   }
 
-  .sponsor-donor{
-    display: grid;
-    row-gap: 25px;
-    column-gap: 25px;
-    align-items: start;
-    width: 80vw;
-    margin-left: auto;
-    margin-right: auto;
+.sponsor-title {
+  color: #282c37;
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.sponsor-desc {
+  font-family: 'Sofia Sans Condensed', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
   .sponsor-one{grid-row: 1; grid-column: 1;}
