@@ -50,7 +50,7 @@ def check_numbers(student):
         student.Socials = socials
         student.Volunteering = vol
         student.Industry = ind
-        student.save()
+
         return False
     return True
 
@@ -62,6 +62,6 @@ def attendance_cleaning():
                 apparent_attendance += 1
         if apparent_attendance != event.attendance:
             event.attendance = apparent_attendance
-            event.save()
             print(f"Event {event.title} is not matching")
+
 attendance_cleaning()
