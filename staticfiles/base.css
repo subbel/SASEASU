@@ -1,13 +1,6 @@
+/* Base Reset and Responsive Setup 
 
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Aller', sans-serif;
-  box-sizing: border-box;
-  color: #282c37;
-}
-
-/* Color Scheme
+Color Scheme
 
 Main: #2b90d9
 Grey: #d9e1e8
@@ -15,121 +8,117 @@ Darker: #9baec8
 Black: #282c37
 Green: #37b24d
 
+GLOBAL Styles 
+
+    Every element with . in front of it is part of the BootStrap framework.
+      BootStrap elements are: .navbar-brand, .footer-div
+    The rest are custom styles for the website.
+
 */
 
-/* NAVBAR Content */
-body{
-  height: 100px;
-}
-
-nav{
-  display: flex;
-  /* justify-content: space-around; */
-  flex-direction: row;
-  gap: 32px;
-  background-color: rgba(0, 0, 0, 0);
-  color: #d9e1e8;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  border-bottom: 2px solid #d9e1e8;
-  z-index: 10;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-nav ul li a{
-  color: #d9e1e8;
-  text-decoration: none;
-}
-
-nav ul li:hover{
-  text-decoration: none;
-  background-color: #d9e1e8;
-  transition: 500ms;
-}
-
-nav ul li:hover a{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Aller', sans-serif;
   color: #282c37;
-  transition: 500ms;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  /* padding-top: 70px; */
+}
+
+/* Main content spacing */
+main {
+  padding: 1rem;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Navbar Styles */
+.navbar-brand {
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  white-space: normal;
+  max-width: 100%;
+  text-align: center;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #2b90d9;
+  transition: background-color 0.5s;
 }
 
 nav ul {
   display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-nav ul li{
-  display: table;
-  height: 50px;
-  list-style-type: none;
-  table-layout: fixed;
-  width: max-content;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-nav ul li a{
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  width: 100%;
-}
-
-nav ul:first-child{
-  margin-left: 1.5%;
-}
-nav h2, nav ul li{
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 4px;
-  font-size: 0.9em;
-}
-
-nav h2{
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
+nav ul li a {
   color: #d9e1e8;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
 }
 
+nav ul li:hover {
+  background-color: #d9e1e8;
+}
 
+nav ul li:hover a {
+  color: #282c37;
+}
 
-/* FOOTER */
-footer{
+/* Hide Heading on Mobile */
+@media (max-width: 900px) {
+  .Heading {
+    display: none;
+  }
+}
+
+/* Footer Styles */
+footer {
+  height: 70px; /* Match navbar height */
   display: flex;
-  justify-content: center; /* Centers everything */
   align-items: center;
-  margin-top: 5%;
+  justify-content: center;
   background-color: #282c37;
   color: #d9e1e8;
-  padding: 20px 0; /* Ensure spacing */
+  padding: 0; /* Remove extra spacing */
+  margin-top: auto;
 }
 
-footer div{
+.footer-div {
   display: flex;
-  flex-direction: row;
-  gap: 20px; /* Adds spacing between icons */
+  gap: 20px;
+  align-items: center;
 }
 
-footer svg{
+
+.footer-div svg {
   width: 30px;
   height: 30px;
   fill: #d9e1e8;
 }
 
- .insta{
+.insta, .discord, .linktree {
   width: 30px;
   height: 30px;
   fill: #d9e1e8;
- }
-
- .discord{
-  width: 30px;
-  height: 30px;
-  fill: #d9e1e8;
- }
-
- .linktree{
-  width: 30px;
-  height: 30px;
-  fill: #d9e1e8;
- }
+}
