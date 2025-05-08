@@ -1,0 +1,30 @@
+<form method="get" id="checkStudent">
+    <label for="email">ASU EMAIL: </label>
+    <input type="email" id="email" name="email">
+
+    <br>
+
+    <label for="asuid">ASU ID: </label>
+    <input type="number" id="asuid" name="asuid">
+
+    <br>
+
+    <button type="submit">SUBMIT</button>
+</form>
+
+<ul>
+    {%for student in object_list%}
+    <h3>{{student }}</h3>
+    <li>{{student.year}}</li>
+    <li>{{student.GBM}}</li>
+    <li>{{student.graduation_year}}</li>
+
+    <li>SOCIAL NUM: {{student.Socials}}</li>
+    <li>INDUSTRY NUM: {{student.Industry}}</li>
+    <li>VOLUNTEERING NUM: {{student.Volunteering}}</li>
+
+    {% empty %}
+    STUDENT NOT FOUND <br>OR <br>ID AND EMAIL NOT MATCH. 
+    {% endfor %}
+
+</ul>

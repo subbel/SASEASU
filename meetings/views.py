@@ -6,6 +6,7 @@ from .models import Meetings, Event, Student,  Current, EventForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.template.context_processors import csrf
+from django.views.generic.list import ListView
 
 def meeting_list_view(request):
     queryset = Meetings.objects.all()
@@ -202,3 +203,48 @@ def donate_view(request, *args, **kwargs):
 def meetings_view(request, *args, **kwargs):
     # return HttpResponse("<h1> Hello World <h1>")
     return render(request, "meetings.html", {})
+
+class student_status_view(ListView):
+    model = Student
+    template_name = "student_status.html"
+
+    def get_queryset(self):
+        queryset = Student.objects.all()
+        asu_email = self.request.GET.get("email")
+        asuid = self.request.GET.get("asuid")
+
+        queryset = queryset.filter(email= asu_email)
+        queryset = queryset.filter(ASUID= asuid)
+
+        return queryset
+
+
+
+class students_list_view(ListView):
+    model = Student
+    context_object_name = "student"
+    template_name = "students_list.html"
+
+    def get_queryset(self):
+        queryset = Student.objects.all()
+
+        n_gbm = self.request.GET.get("n_gbm")
+        see_all = self.request.GET.get("see_all")
+        order_by = self.request.GET.get("order_by")
+
+        if n_gbm and not see_all:
+            queryset = queryset.filter(GBM=n_gbm)
+        elif see_all: 
+            n_gbm = None
+            queryset = Student.objects.all()
+
+        if order_by == "graduation_year":
+            student_list = list(queryset) #use list to use .sort()
+            student_list.sort(key=lambda s: s.graduation_year[-2:]) #sort list by last 2 digit(year)
+            return student_list
+        elif order_by:
+            queryset = queryset.order_by(order_by)
+        else:
+            queryset = queryset.order_by("lastname")
+
+        return queryset

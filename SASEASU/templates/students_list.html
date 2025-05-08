@@ -1,0 +1,39 @@
+{% comment %} <head>
+    <link rel="stylesheet" href="/static/student_list.css">
+</head> {% endcomment %}
+
+<form method="get" id="filterForm">
+    <label for="n_gbm">Filter by GBM number:</label>
+    <input type="number" id="n_gbm" name="n_gbm" 
+        step="1" min="0" onchange="this.form.submit()" 
+        value="{% if not request.GET.see_all %}{{ request.GET.n_gbm }}{% endif %}">
+
+    <button name="see_all" type="submit" value="1">SEE ALL</button>
+
+    <br><br>
+
+    <label for="order_by">ORDER BY: </label>
+    <select name="order_by" id="order_by" onchange="this.form.submit()">
+        <option value="lastname" {% if request.GET.order_by == "lastname" %} selected {% endif %}>Last Name</option>
+        <option value="firstname" {% if request.GET.order_by == "firstname" %} selected {% endif %}>First Name</option>
+        <option value="GBM" {% if request.GET.order_by == "GBM" %} selected {% endif %}>GBM Number</option>
+        <option value="graduation_year" {% if request.GET.order_by == "graduation_year" %} selected {% endif %}>Graduation Year</option>
+    </select>
+</form>
+
+<ul>
+    {%for student in object_list%}
+    <h3>{{student}}</h3>
+
+    <li>{{student.year}}</li>
+    <li>{{student.GBM}}</li>
+    <li>{{student.graduation_year}}</li>
+
+    <li>SOCIAL NUM: {{student.Socials}}</li>
+    <li>INDUSTRY NUM: {{student.Industry}}</li>
+    <li>VOLUNTEERING NUM: {{student.Volunteering}}</li>
+
+    {% empty %}
+    <li>No Student yet.</li>
+    {% endfor %}
+</ul>

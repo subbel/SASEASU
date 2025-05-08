@@ -89,15 +89,14 @@ class Student(models.Model):
     GBM = models.IntegerField(default=0)
     Industry = models.IntegerField(default=0)
     Volunteering = models.IntegerField(default=0)
-    registration_payment = models.BooleanField(default = False)
+    # registration_payment = models.BooleanField(default = False)
     validprofile = models.BooleanField(default=True)
-
-    graduation_year = models.CharField(max_length=50)
     discord = models.CharField(max_length=50)
     year = models.CharField(max_length=20)
     major = models.CharField(max_length=100,)
     campus = models.CharField(max_length=50,)
     events = models.TextField()
+    graduation_year = models.CharField(max_length=50)
 
 
     def __str__(self) -> str:

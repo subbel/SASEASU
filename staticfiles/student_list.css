@@ -1,0 +1,102 @@
+/* Basic reset */
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1200px;
+
+}
+
+/* Body style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 20px;
+    justify-content: center;
+}
+
+/* Form styling */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+label {
+    width: 50%;
+    padding: 8px;
+    margin: 0 auto 15px; 
+    display: block;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input,
+form select,
+form button {
+    width: 50%;
+    padding: 8px;
+    margin: 0 auto 15px; 
+    display: block;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+form button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start; 
+    width: 80%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+ul h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #007BFF;
+    margin-top: 10px;
+}
+
+ul li {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-left: 20px;
+    width: 100%;    
+}
