@@ -1,21 +1,25 @@
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <title>SASE - ASU CHAPTER</title>
 
   <!-- Fonts + Bootstrap + Custom CSS -->
-  <link href="https://fonts.cdnfonts.com/css/aller" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="{% static 'base.css' %}" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/aller" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{% static 'base.css' %}" rel="stylesheet">
+  {% block extra_css %}{% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
 
   <!-- Navbar -->
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand d-none d-md-block">THE SOCIETY OF ASIAN SCIENTISTS AND ENGINEERS - ASU CHAPTER</a>
-      <a class="navbar-brand d-block d-md-none">THE SOCIETY OF ASIAN SCIENTISTS AND ENGINEERS</a>
+      <a class="navbar-brand d-none d-md-block" href="/">THE SOCIETY OF ASIAN SCIENTISTS AND ENGINEERS - ASU CHAPTER</a>
+      <a class="navbar-brand d-block d-md-none" href="/">SASE - ASU</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,49 +31,69 @@
           <li class="nav-item"><a class="nav-link" href="/gallery/">GALLERY</a></li>
           <li class="nav-item"><a class="nav-link" href="/donate/">DONATE</a></li>
           <li class="nav-item"><a class="nav-link" href="/meetings/">MEETINGS</a></li>
+          <li class="nav-item"><a class="nav-link" href="/student-area/">STUDENT AREA</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <main class="container-fluid p-0">
+  <main>
     {% block content %}{% endblock %}
   </main>
 
   <!-- Footer -->
-  <footer class="text-center mt-auto">
-    <!-- <p> Our socials</p> -->
+  <footer class="mt-auto">
     <div class="footer-div">
-      <a href="https://www.instagram.com/saseasu/?hl=en" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" class="insta" viewBox="0 0 512 512"><path d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z"/><path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z"/></svg></a>
-      <a href="https://discord.com/invite/vZc2jBG" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" class="discord" viewBox="0 0 512 512"><path d="M464 66.52A50 50 0 00414.12 17L97.64 16A49.65 49.65 0 0048 65.52V392c0 27.3 22.28 48 49.64 48H368l-13-44 109 100zM324.65 329.81s-8.72-10.39-16-19.32C340.39 301.55 352.5 282 352.5 282a139 139 0 01-27.85 14.25 173.31 173.31 0 01-35.11 10.39 170.05 170.05 0 01-62.72-.24 184.45 184.45 0 01-35.59-10.4 141.46 141.46 0 01-17.68-8.21c-.73-.48-1.45-.72-2.18-1.21-.49-.24-.73-.48-1-.48-4.36-2.42-6.78-4.11-6.78-4.11s11.62 19.09 42.38 28.26c-7.27 9.18-16.23 19.81-16.23 19.81-53.51-1.69-73.85-36.47-73.85-36.47 0-77.06 34.87-139.62 34.87-139.62 34.87-25.85 67.8-25.12 67.8-25.12l2.42 2.9c-43.59 12.32-63.44 31.4-63.44 31.4s5.32-2.9 14.28-6.77c25.91-11.35 46.5-14.25 55-15.21a24 24 0 014.12-.49 205.62 205.62 0 0148.91-.48 201.62 201.62 0 0172.89 22.95s-19.13-18.15-60.3-30.45l3.39-3.86s33.17-.73 67.81 25.16c0 0 34.87 62.56 34.87 139.62 0-.28-20.35 34.5-73.86 36.19z"/><path d="M212.05 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.8 0 24.7-11.83 24.7-26.57.25-14.76-10.9-26.57-24.7-26.57zM300.43 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.81 0 24.7-11.83 24.7-26.57S314 218 300.43 218z"/></svg></a>
-      <a href="https://linktr.ee/saseasu" target="_blank"><svg version="1.0" id="svg5" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 711.6 500.3" style="enable-background:new 0 0 711.6 500.3;" xml:space="preserve" class="linktree"><g id="layer1" transform="translate(-34.813623,-47.365765)" inkscape:groupmode="layer" inkscape:label="Layer 1"><g id="g46" transform="matrix(0.26458333,0,0,0.26458333,-15.67531,43.64805)"><g id="g18" transform="matrix(0.857143,0,0,0.857143,8,306)"><path id="path993" class="st0" d="M1666.4,1043.3h236.4v531.3h-236.4V1043.3"/><path id="path991" class="st0" d="M1119.8,499.4h401.7l-286-270.7l157.6-160.6l272.1,278.3V-49.6h236.4v395.9l272-278.3 l157.6,160.6l-286,270.7H2447v223.9h-404.3l287.3,278.3l-157.6,156.9l-390.3-390.9l-390.3,390.9l-157.6-156.9l287.3-278.3h-404.2     V499.4H1119.8"/>
+      <a href="https://www.instagram.com/saseasu/?hl=en" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" class="insta" viewBox="0 0 512 512">
+          <path d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z"/>
+          <path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z"/>
+        </svg>
+      </a>
+      <a href="https://discord.com/invite/vZc2jBG" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" class="discord" viewBox="0 0 512 512">
+          <path d="M464 66.52A50 50 0 00414.12 17L97.64 16A49.65 49.65 0 0048 65.52V392c0 27.3 22.28 48 49.64 48H368l-13-44 109 100zM324.65 329.81s-8.72-10.39-16-19.32C340.39 301.55 352.5 282 352.5 282a139 139 0 01-27.85 14.25 173.31 173.31 0 01-35.11 10.39 170.05 170.05 0 01-62.72-.24 184.45 184.45 0 01-35.59-10.4 141.46 141.46 0 01-17.68-8.21c-.73-.48-1.45-.72-2.18-1.21-.49-.24-.73-.48-1-.48-4.36-2.42-6.78-4.11-6.78-4.11s11.62 19.09 42.38 28.26c-7.27 9.18-16.23 19.81-16.23 19.81-53.51-1.69-73.85-36.47-73.85-36.47 0-77.06 34.87-139.62 34.87-139.62 34.87-25.85 67.8-25.12 67.8-25.12l2.42 2.9c-43.59 12.32-63.44 31.4-63.44 31.4s5.32-2.9 14.28-6.77c25.91-11.35 46.5-14.25 55-15.21a24 24 0 014.12-.49 205.62 205.62 0 0148.91-.48 201.62 201.62 0 0172.89 22.95s-19.13-18.15-60.3-30.45l3.39-3.86s33.17-.73 67.81 25.16c0 0 34.87 62.56 34.87 139.62 0-.28-20.35 34.5-73.86 36.19z"/>
+          <path d="M212.05 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.8 0 24.7-11.83 24.7-26.57.25-14.76-10.9-26.57-24.7-26.57zM300.43 218c-13.8 0-24.7 11.84-24.7 26.57s11.14 26.57 24.7 26.57c13.81 0 24.7-11.83 24.7-26.57S314 218 300.43 218z"/>
+        </svg>
+      </a>
+      <a href="https://linktr.ee/saseasu" target="_blank">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="linktree" viewBox="0 0 711.6 500.3">
+          <g transform="translate(-34.813623,-47.365765)">
+            <g transform="matrix(0.26458333,0,0,0.26458333,-15.67531,43.64805)">
+              <g transform="matrix(0.857143,0,0,0.857143,8,306)">
+                <path class="st0" d="M1666.4,1043.3h236.4v531.3h-236.4V1043.3"/>
+                <path class="st0" d="M1119.8,499.4h401.7l-286-270.7l157.6-160.6l272.1,278.3V-49.6h236.4v395.9l272-278.3 l157.6,160.6l-286,270.7H2447v223.9h-404.3l287.3,278.3l-157.6,156.9l-390.3-390.9l-390.3,390.9l-157.6-156.9l287.3-278.3h-404.2V499.4H1119.8"/>
+              </g>
             </g>
           </g>
-        </g>
         </svg>
       </a>
     </div>
-</footer>
+  </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-const navbar = document.getElementById("navbar");
-navbar.style.backgroundColor = "#2b90d9";
-/*
-    window.onscroll = function () {
-      const nav = document.getElementById("navbar");
-      if (document.body.scrollTop <= 25 || document.documentElement.scrollTop <= 25) {
-        nav.style.backgroundColor = "#2b90d9";
-      } else {
-        nav.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set initial navbar state
+      updateNavbarBackground();
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', updateNavbarBackground);
+      
+      function updateNavbarBackground() {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 25) {
+          navbar.style.backgroundColor = "#2b90d9";
+        } else {
+          navbar.style.backgroundColor = "rgba(0, 0, 0, 0)";
+        }
       }
-    };
-*/
+    });
   </script>
+  {% block extra_js %}{% endblock %}
 </body>
 </html>
-
 
 <!-- This is the base template for the SASE@ASU website. It includes a navigation bar, a footer, and a block for content that will be filled in by other templates. The navbar changes color on scroll, and the footer contains links to social media. The CSS styles are included inline for simplicity, but can be moved to an external stylesheet if desired. -->

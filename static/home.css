@@ -1,5 +1,95 @@
 /* HEADER Content */
 
+
+/* Hero Section */
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  height: 100vh;
+  background: url('/static/Images/img_1.jpg') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1.5rem;
+  }
+}
+
+/* About Section */
+.about-section {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+}
+
+.about-text {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 60px 0;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.stat-item {
+  margin-bottom: 30px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.stat-text {
+  font-size: 1rem;
+}
+
+/* Three Pillars Section */
+.pillars-section {
+  padding: 60px 0;
+  background-color: #f1f1f1;
+}
+
+.pillar-card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+}
+
+.pillar-img {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.pillar-title {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+
+
 /* === Global Reset === */
 html, body {
   margin: 0;

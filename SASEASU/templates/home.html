@@ -1,72 +1,91 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link href="{% static 'home.css' %}" rel="stylesheet" />
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static 'home.css' %}">
 
-<main class="container-fluid p-0">
 
-  <!-- Full-width header with background image -->
-  <header>
-    <h1>THE SOCIETY OF ASIAN SCIENTISTS AND ENGINEERS</h1>
-    <h3>ASU Chapter</h3>
-  </header>
+  <!-- Hero Section with Welcome Banner -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">WELCOME TO SASE AT ASU</h1>
+    </div>
+  </section>
 
-  <article>
-    <div class="container text-center my-5">
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-md-10 col-lg-8">
-          <h2 class="article-heading">WELCOME TO SASE @ ASU</h2>
-          <p>SASE at ASU is dedicated to the advancement of Asian heritage scientists and engineers in education and employment so that they can achieve their full career potential. In addition to professional development, SASE at ASU also encourages members to contribute to the enhancement of the communities in which they live.
-          </p>
+        <div class="col-md-10 col-lg-8">
+          <div class="about-text">
+            <p class="mb-0">SASE ASU is a student community passionate about STEM. We host events, meetings, and outreach activities to help you grow both personally and professionally.</p>
+          </div>
         </div>
       </div>
-    </div>    
+    </div>
+  </section>
 
-    <!-- Three image flex section -->
-    <div class="three-img">
-      <div>
-        <img src="{% static 'Images/prepare_img.jpg' %}" alt="Prepare">
-        <h3>PREPARE</h3>
-        <p style="font-family: 'Sofia Sans Condensed'; font-size: 20px;">We prepare Asian heritage scientists and engineers for success in the global business world</p>
-      </div>
-      <div>
-        <img src="{% static 'Images/celebrate_img.jpg' %}" alt="Celebrate"  style="object-position: center top;" />
-        <h3>CELEBRATE</h3>
-        <p style="font-family: 'Sofia Sans Condensed'; font-size: 20px;">We celebrate diversity on campuses and in the workplace</p>
-      </div>
-      <div>
-        <img src="{% static 'Images/provide_img.png' %}" alt="Provide">
-        <h3>PROVIDE</h3>
-        <p style="font-family: 'Sofia Sans Condensed'; font-size: 20px;">We provide opportunities for members to make contributions to their local communities</p>
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="stat-item">
+            <div class="stat-number">14+</div>
+            <div class="stat-text">Years Empowering Asian Scientists</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-item">
+            <div class="stat-number">2.5M+</div>
+            <div class="stat-text">Community Impact Hours</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="stat-item">
+            <div class="stat-number">75%</div>
+            <div class="stat-text">Members Find Career Opportunities</div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Goal section with image background -->
-    <div class="img-note" style="margin-top: 5%;">
-      <div class="img--note" style="padding-left: 5%; padding-right: 5%;">
-        <h1 style="font-size: 30px;">OUR GOAL</h1>
-        <p style="font-family: 'Aller'; font-size: 20px; letter-spacing: 0.7px;">Unlocking full career potential at the ASU - Tempe campus.</p>
+  <!-- Three Pillars Section -->
+  <section class="pillars-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card pillar-card h-100">
+            <img src="{% static 'Images/prepare_img.jpg' %}" class="pillar-img" alt="Prepare">
+            <div class="card-body text-center">
+              <h3 class="pillar-title">PREPARE</h3>
+              <p class="card-text">We prepare Asian heritage scientists and engineers for success in the global business world</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card pillar-card h-100">
+            <img src="{% static 'Images/celebrate_img.jpg' %}" class="pillar-img" alt="Celebrate">
+            <div class="card-body text-center">
+              <h3 class="pillar-title">CELEBRATE</h3>
+              <p class="card-text">We celebrate diversity on campuses and in the workplace</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card pillar-card h-100">
+            <img src="{% static 'Images/provide_img.png' %}" class="pillar-img" alt="Provide">
+            <div class="card-body text-center">
+              <h3 class="pillar-title">PROVIDE</h3>
+              <p class="card-text">We provide opportunities for members to make contributions to their local communities</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </article>
-
-  <!-- Navbar scroll background script -->
-  <script>
-    const navbar = document.getElementById("navbar");
-    navbar.style.backgroundColor = "#2b90d9";
-/*
-    window.onscroll = function () {
-      const navbar = document.getElementById("navbar");
-      if (document.body.scrollTop > 25 || document.documentElement.scrollTop > 25) {
-        navbar.style.backgroundColor = "#2b90d9";
-        navbar.style.transition = "500ms";
-      } else {
-        navbar.style.backgroundColor = "rgba(0, 0, 0, 0)";
-      }
-    };
-*/
-  </script>
-
-</main>
+  </section>
 {% endblock %}
