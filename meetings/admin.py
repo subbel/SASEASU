@@ -13,7 +13,9 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ("name", "title", "attendance", "type")
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
+    # list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
     list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
+
 
     def mark(modeladmin, request, queryset):
         dropdown = get_object_or_404(Current, pk =1)
