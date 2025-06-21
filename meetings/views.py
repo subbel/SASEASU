@@ -101,33 +101,33 @@ def signin(request):
                 event.attendance = F("attendance") + 1
                 event.save()
                 typo = event.type
-                if typo == "1":
-                    student.GBM += 1
-                    student.save()
-                elif typo == "2":
-                    student.Socials += 1
-                    student.save()
-                elif typo == "3":
-                    student.Industry += 1
-                    student.save()
-                elif typo == "4":
-                    student.Industry += 1
-                    student.GBM += 1
-                    student.save()
-                elif typo == "5":
-                    student.Socials +=1
-                    student.GBM += 1
-                    student.save()
-                elif typo == "6":
-                    student.Socials +=1
-                    student.Industry += 1
-                    student.save()
-                elif typo == "7":
-                    student.Volunteering +=1
-                    student.save()
-                elif typo == "7":
-                    student.GBM +=1
-                    student.save()
+                # if typo == "1":
+                #     student.GBM += 1
+                #     student.save()
+                # elif typo == "2":
+                #     student.Socials += 1
+                #     student.save()
+                # elif typo == "3":
+                #     student.Industry += 1
+                #     student.save()
+                # elif typo == "4":
+                #     student.Industry += 1
+                #     student.GBM += 1
+                #     student.save()
+                # elif typo == "5":
+                #     student.Socials +=1
+                #     student.GBM += 1
+                #     student.save()
+                # elif typo == "6":
+                #     student.Socials +=1
+                #     student.Industry += 1
+                #     student.save()
+                # elif typo == "7":
+                #     student.Volunteering +=1
+                #     student.save()
+                # elif typo == "7":
+                #     student.GBM +=1
+                #     student.save()
                 student.events += event.title + " , "
                 student.save()
                 context = {}

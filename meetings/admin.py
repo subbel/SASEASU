@@ -14,7 +14,7 @@ class EventAdmin(admin.ModelAdmin):
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
     # list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
-    list_display = ("firstname", "lastname", "email", "GBM", "Socials", "Industry", "validprofile")
+    list_display = ("firstname", "lastname", "email", "validprofile")
 
 
     def mark(modeladmin, request, queryset):
@@ -27,14 +27,16 @@ class StudentAdmin(admin.ModelAdmin):
                 stringcsv.append([i.firstname,i.lastname,i.email , i.major])
         response = render(request, "test01.html", context={"data":stringcsv})
         return response
-    def active(modeladmin, request, queryset):
-        list_of_active = []
-        for student in queryset:
-            if (student.Socials >= 1 or student.Volunteering >= 1) and (student.Industry >= 1) and (student.GBM >= 1):
-                list_of_active.append([student.firstname, student.lastname, student.email, student.major])
-        return render(request, "test01.html", context={"data":list_of_active})
 
-    actions = [mark, active]
+    # Change Made by : Subbel (Due to removal of the counting system)
+    # def active(modeladmin, request, queryset):
+    #     list_of_active = []
+    #     for student in queryset:
+    #         if (student.Socials >= 1 or student.Volunteering >= 1) and (student.Industry >= 1) and (student.GBM >= 1):
+    #             list_of_active.append([student.firstname, student.lastname, student.email, student.major])
+    #     return render(request, "test01.html", context={"data":list_of_active})
+    # actions = [mark, active]
+    actions = [mark]
 admin.site.register(Current)
 
 class MeetingsAdmin(admin.ModelAdmin):
